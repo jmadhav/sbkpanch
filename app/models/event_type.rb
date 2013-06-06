@@ -13,9 +13,9 @@ class EventType < ActiveRecord::Base
   validates_presence_of  :name, :display_name, :created_by, :updated_by
   validates_uniqueness_of :name
   validates_inclusion_of :disabled, in: [true, false]
-  validate :valiadte_event_type_item_details
+  validate :validate_event_type_item_details
   
-  def valiadte_event_type_item_details
+  def validate_event_type_item_details
     row_count = 0
     self.event_type_item_details.each{ |d| if (d._destroy == false); row_count +=1; end }
     self.errors.add(:base, "Please enter Items for #{self.class.to_s} ")  if row_count == 0
