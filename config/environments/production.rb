@@ -67,7 +67,7 @@ PhaseOne::Application.configure do
   
   # ExceptionNotifier
   config.middleware.use ExceptionNotifier,
-    email_prefix: => "SBKWEB-Errors: ",
+    email_prefix: "SBKWEB-Errors: ",
     sender_address: 'donotreply@sbkpanch.com',
     exception_recipients: 'errors@sbkpanch.com'
 end
