@@ -1,0 +1,44 @@
+- content_for :title do
+  Visitor mail subjects
+
+- content_for :subheader do
+  .page-header
+    %h2 Listing visitor mail subjects
+
+%h4.pull-right
+  = link_to 'New Visitor mail subject', new_visitor_mail_subject_path, :class =>  'btn btn-large'
+
+%br
+
+.row-fluid
+  %ul.pager.pull-right
+    %li
+      = link_to_previous_page @visitor_mail_subjects, 'Previous Page'
+    %li
+      = link_to_next_page @visitor_mail_subjects, 'Next Page'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Subject
+      %th{:width =>"10%"}
+      %th{:width =>"10%"} Actions
+      %th{:width =>"10%"}
+  %tbody
+    - @visitor_mail_subjects.each do |visitor_mail_subject|
+      %tr
+        %td= visitor_mail_subject.subject
+        %td= link_to "<i class='icon-eye-open'></i> Show".html_safe, visitor_mail_subject, :class => 'btn btn-small'
+        %td= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_visitor_mail_subject_path(visitor_mail_subject), :class => 'btn btn-small'
+        %td= link_to "<i class='icon-trash'></i> Delete".html_safe, visitor_mail_subject, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small'
+
+    - if @visitor_mail_subjects.blank?
+      %tr
+        %td{:colspan=>"#{1 + 3}", :style=>"text-align:center"} NO DATA AVAILABLE
+
+.row-fluid
+  %ul.pager.pull-right
+    %li
+      = link_to_previous_page @visitor_mail_subjects, 'Previous Page'
+    %li
+      = link_to_next_page @visitor_mail_subjects, 'Next Page'

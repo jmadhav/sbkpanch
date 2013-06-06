@@ -1,0 +1,68 @@
+%header
+  %nav.navbar.navbar-fixed-top.navbar-inverse
+    .navbar-inner
+      .container
+        %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.brand{:href => "/"}
+          SBK Panch
+        .nav-collapse
+          %ul.nav.pull-right
+            - if content_for?(:navbar_home)
+              = yield(:navbar_home)
+            -else
+              %li
+                %a{:href => "/"} Home
+            - if content_for?(:navbar_activities)
+              = yield(:navbar_activities)
+            -else
+              %li
+                %a{:href => "/activities"} Activities
+            - if content_for?(:navbar_events)
+              = yield(:navbar_events)
+            -else
+              %li
+                %a{:href => "/current_events"} Events
+            - if content_for?(:navbar_notifications)
+              = yield(:navbar_notifications)
+            -else
+              %li
+                %a{:href => "/current_notifications"}
+                  - unless session[:notification_checked]
+                    New Notifcations
+                    %img{ :src => "/assets/notification.svg.thumb.png", :style => "height:20px"}/
+                  - else
+                    Notifcations
+            - if content_for?(:navbar_about_us)
+              = yield(:navbar_about_us)
+            -else
+              %li
+                %a{:href => "/about_us"} About us
+            - if content_for?(:navbar_contact)
+              = yield(:navbar_contact)
+            - else    
+              %li
+                %a{:href => "/contact"} Contact
+            - if admin_signed_in?
+              - if content_for?(:navbar_dashboard)
+                = yield(:navbar_dashboard)
+              - else
+                %li
+                  %a{:href => admins_dashboard_path} 
+                    %i.icon-user
+                    #{current_admin.name}
+              %li 
+                = link_to "Sign out", destroy_admin_session_path, :method  =>  :delete
+            -#else       
+              - if content_for?(:navbar_signup)
+                = yield(:navbar_signup)
+              -else
+                %li
+                  = link_to "Sign up", new_authentication_registration_path
+              - if content_for?(:navbar_signin)
+                = yield(:navbar_signin)
+              -else
+                %li
+                  = link_to "Sign in", new_authentication_session_path

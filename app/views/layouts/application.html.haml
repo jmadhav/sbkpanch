@@ -1,0 +1,30 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title
+      SBK Panch | |
+      = yield :title
+    %meta{:content => "Bootsrap based theme", :name => "description"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    /[if lt IE 9]
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+%body
+  / Page Header
+  = render "layouts/header"
+  .container
+    .row-fluid.logo.pull-center
+      %img{:alt => "Sindhi Bhrama Kshatriya Panch", :src => "/assets/sbk-panch-title.png"}/
+      %p#back-top>
+        %a{:href => "#top"}>
+          %span Back to Top
+    = yield :subheader
+    - unless alert.blank?
+      %br
+      %p.alert
+        = alert
+    = yield
+    / Page Footer
+    = render "layouts/footer"

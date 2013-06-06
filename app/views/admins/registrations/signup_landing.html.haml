@@ -1,0 +1,16 @@
+- content_for :title do
+  Confirmation Note
+  
+- content_for :subheader do
+  .page-header
+    %h2 Confirmation Note
+  
+%br/
+%p#notice
+  = notice
+%br/
+- if devise_mapping.confirmable? && controller_name != 'confirmations'
+  Please check your email and click on the link to continue with the Sign-up process.
+  %br
+  %br
+  = link_to "Re-send verification email", new_admin_confirmation_path, :class => 'btn btn-primary'

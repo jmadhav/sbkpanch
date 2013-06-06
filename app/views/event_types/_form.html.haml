@@ -1,0 +1,41 @@
+= form_for @event_type, :html => {:id => 'event_type_from', :class => 'form-horizontal' } do |f|
+  %fieldset
+    -if @event_type.errors.any?
+      .row-fluid
+        .span6
+          #error_explanation
+            %h2= "#{pluralize(@event_type.errors.count, "error")}"
+            %ul
+              - @event_type.errors.full_messages.each do |msg|
+                %li= msg
+    
+  
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls
+        = f.text_field :name,  :class => 'text_field', :required => true
+  
+    .control-group
+      = f.label :display_name, :class => 'control-label'
+      .controls
+        = f.text_field :display_name,  :class => 'text_field', :required => true
+
+    .control-group
+      = f.label :booked, :class => 'control-label'
+      .controls
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th Item:
+              %th Actions
+          %tbody
+            = f.fields_for :event_type_item_details do |d|
+              = render 'event_types/event_type_item_detail_fields', :f => d
+            %tr
+              %td
+              %td
+                = link_to_add_fields( "<i class='icon-plus'></i> Add".html_safe, f, :event_type_item_details)
+    
+  .form-actions
+    = f.submit 'Save', :class => 'btn btn-primary'
+    = link_to 'Cancel', :back, :class => 'btn'

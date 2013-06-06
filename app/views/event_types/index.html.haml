@@ -1,0 +1,48 @@
+- content_for :title do
+  Event types
+
+- content_for :subheader do
+  .page-header
+    %h2 Listing event types
+
+%h4.pull-right
+  = link_to 'New Event type', new_event_type_path, :class =>  'btn btn-large'
+
+%br
+
+.row-fluid
+  %ul.pager.pull-right
+    %li
+      = link_to_previous_page @event_types, 'Previous Page'
+    %li
+      = link_to_next_page @event_types, 'Next Page'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Display name
+      %th Booked
+      %th{:width =>"10%"}
+      %th{:width =>"10%"} Actions
+      %th{:width =>"10%"}
+  %tbody
+    - @event_types.each do |event_type|
+      %tr
+        %td= event_type.name
+        %td= event_type.display_name
+        %td= event_type.description
+        %td= link_to "<i class='icon-eye-open'></i> Show".html_safe, event_type, :class => 'btn btn-small'
+        %td= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_event_type_path(event_type), :class => 'btn btn-small'
+        %td= link_to "<i class='icon-trash'></i> Delete".html_safe, event_type, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small'
+
+    - if @event_types.blank?
+      %tr
+        %td{:colspan=>"#{3 + 3}", :style=>"text-align:center"} NO DATA AVAILABLE
+
+.row-fluid
+  %ul.pager.pull-right
+    %li
+      = link_to_previous_page @event_types, 'Previous Page'
+    %li
+      = link_to_next_page @event_types, 'Next Page'

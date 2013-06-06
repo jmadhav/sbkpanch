@@ -1,0 +1,50 @@
+- content_for :title do
+  Current Events
+  
+- content_for :navbar_events do
+  %li.active
+    %a{:href => "/current_events"} Events
+
+- content_for :subheader do
+  .page-header
+    %h1
+      Current Events
+
+.row-fluid
+  .span10.offset1
+    .row-fluid
+      %ul.pager.pull-right
+        %li
+          = link_to_previous_page @events, 'Previous Page'
+        %li
+          = link_to_next_page @events, 'Next Page'
+
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Event type
+          %th Booked by
+          %th Booked
+          %th From date time
+          %th To date time
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td
+              %b= EventType.find(event.event_type_id).display_name
+            %td= event.booked_by
+            %td= event.description
+            %td= date_format event.from_date_time
+            %td= date_format event.to_date_time
+
+        - if @events.blank?
+          %tr
+            %td{:colspan=>"5", :style=>"text-align:center"} NO DATA AVAILABLE
+
+    .row-fluid
+      %ul.pager.pull-right
+        %li
+          = link_to_previous_page @events, 'Previous Page'
+        %li
+          = link_to_next_page @events, 'Next Page'
+      = link_to_next_page @events, 'Next Page'

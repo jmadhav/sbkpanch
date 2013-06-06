@@ -1,0 +1,54 @@
+- content_for :title do
+  Show event
+
+- content_for :subheader do
+  .page-header
+    %h2 Show event
+
+.row-fluid
+  = link_to "<i class='icon-pencil'></i>Edit".html_safe, edit_event_path(@event), :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
+  = link_to "<i class='icon-list'></i>Back".html_safe, events_path, :class => "btn btn-small pull-right"
+
+
+%p#notice= notice
+
+.form-horizontal
+  %fieldset
+  
+    .control-group
+      %label.control-label
+        %b From date time:
+      .controls{:style => 'padding-top: 6px;'}
+        = date_format @event.from_date_time
+  
+    .control-group
+      %label.control-label
+        %b To date time:
+      .controls{:style => 'padding-top: 6px;'}
+        = date_format @event.to_date_time
+  
+    .control-group
+      %label.control-label
+        %b Event type:
+      .controls{:style => 'padding-top: 6px;'}
+        = EventType.find(@event.event_type_id).display_name
+        %small
+          = EventType.find(@event.event_type_id).name
+  
+    .control-group
+      %label.control-label
+        %b Booked by:
+      .controls{:style => 'padding-top: 6px;'}
+        = @event.booked_by
+  
+    .control-group
+      %label.control-label
+        %b Booked:
+      .controls{:style => 'padding-top: 6px;'}
+        = @event.description
+
+.row-fluid
+  %small.muted
+    Created by: #{@event.created_by}, Updated by: #{@event.updated_by},
+  %small.muted
+    Created at: #{date_format @event.created_at}, Updated at: #{date_format @event.updated_at}

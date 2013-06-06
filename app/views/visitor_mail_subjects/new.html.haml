@@ -1,0 +1,11 @@
+- content_for :title do
+  New visitor mail subject
+
+- content_for :subheader do
+  .page-header
+    %h2 New visitor mail subject
+
+.row-fluid
+  = link_to "<i class='icon-list'></i> Back".html_safe, visitor_mail_subjects_path, :class => "btn btn-small pull-right"
+
+= render 'form'

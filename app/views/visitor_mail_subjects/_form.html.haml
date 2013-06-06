@@ -1,0 +1,20 @@
+= form_for @visitor_mail_subject, :html => {:id => 'visitor_mail_subject_from', :class => 'form-horizontal' } do |f|
+  %fieldset
+    -if @visitor_mail_subject.errors.any?
+      .row-fluid
+        .span6
+          #error_explanation
+            %h2= "#{pluralize(@visitor_mail_subject.errors.count, "error")}"
+            %ul
+              - @visitor_mail_subject.errors.full_messages.each do |msg|
+                %li= msg
+    
+  
+    .control-group
+      = f.label :subject, :class => 'control-label'
+      .controls
+        = f.text_area :subject, :col => 40, :rows => 10, :required => true
+  
+  .form-actions
+    = f.submit 'Save', :class => 'btn btn-primary'
+    = link_to 'Cancel', :back, :class => 'btn'

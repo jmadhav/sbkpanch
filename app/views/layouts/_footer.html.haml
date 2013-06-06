@@ -1,0 +1,22 @@
+%footer.footer
+  %small
+    &copy; SBK Panch 2013
+  %nav
+    %ul
+      - unless admin_signed_in?
+        %li
+          = link_to "Admin Login", new_admin_session_path
+
+:javascript
+  $("#back-top").hide();
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 100)
+      $('#back-top').fadeIn();
+    else
+      $('#back-top').fadeOut();
+  });
+  $('#back-top').click(function () {
+    $('body,html').animate({scrollTop: 0}, 800);
+    return false;
+  });
+

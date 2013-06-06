@@ -1,0 +1,83 @@
+- content_for :title do
+  Current Notifications
+  
+- content_for :navbar_notifications do
+  %li.active
+    %a{:href => "/current_notifications"} Notifications
+
+- content_for :subheader do
+  .page-header
+    %h1
+      Current Notifications
+
+.row-fluid
+  .span10.offset1
+    .page-header
+      %h2 Death Notifications
+    .row-fluid
+      %ul.pager.pull-right
+        %li
+          = link_to_previous_page @death_notifications, 'Previous Page'
+        %li
+          = link_to_next_page @death_notifications, 'Next Page'
+
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Death of
+          %th Expired On
+          %th Place
+          %th Address
+      %tbody
+        - @death_notifications.each do |notification|
+          %tr
+            %td= notification.death_of
+            %td= date_format notification.date_time
+            %td= notification.place
+            %td= notification.address
+        - if @death_notifications.blank?
+          %tr
+            %td{:colspan=>"4", :style=>"text-align:center"} NO NEW NOTIFICATIONS
+
+    .row-fluid
+      %ul.pager.pull-right
+        %li
+          = link_to_previous_page @death_notifications, 'Previous Page'
+        %li
+          = link_to_next_page @death_notifications, 'Next Page'
+    .page-header
+      %h2 Condolense Notifications
+    .row-fluid
+      %ul.pager.pull-right
+        %li
+          = link_to_previous_page @condolense_notifications, 'Previous Page'
+        %li
+          = link_to_next_page @condolense_notifications, 'Next Page'
+
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Condolense for
+          %th Datetime
+          %th Place
+          %th Address
+      %tbody
+        - @condolense_notifications.each do |notification|
+          %tr
+            %td= notification.death_of
+            %td= date_format notification.date_time
+            %td= notification.place
+            %td= notification.address
+        - if @condolense_notifications.blank?
+          %tr
+            %td{:colspan=>"4", :style=>"text-align:center"} NO NEW NOTIFICATIONS
+
+    .row-fluid
+      %ul.pager.pull-right
+        %li
+          = link_to_previous_page @condolense_notifications, 'Previous Page'
+        %li
+          = link_to_next_page @condolense_notifications, 'Next Page'
+
+:javascript
+   window.setTimeout('location.reload()', 60000);

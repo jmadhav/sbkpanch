@@ -1,0 +1,18 @@
+- content_for :title do
+  Edit event type
+
+- content_for :subheader do
+  .page-header
+    %h2 Editing event type
+
+.row-fluid
+  = link_to "<i class='icon-eye-open'></i> Show".html_safe, @event_type, :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
+  = link_to "<i class='icon-list'></i> Back".html_safe, event_types_path, :class => "btn btn-small pull-right"
+  
+= render 'form'
+
+.row-fluid
+  %small.muted
+    Created by: #{@event_type.created_by}, Updated by: #{@event_type.updated_by},
+  %small.muted
+    Created at: #{date_format @event_type.created_at}, Updated at: #{date_format @event_type.updated_at}

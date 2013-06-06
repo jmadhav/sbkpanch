@@ -1,0 +1,18 @@
+- content_for :title do
+  Edit visitor mail
+
+- content_for :subheader do
+  .page-header
+    %h2 Editing visitor mail
+
+.row-fluid
+  = link_to "<i class='icon-eye-open'></i> Show".html_safe, @visitor_mail, :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
+  = link_to "<i class='icon-list'></i> Back".html_safe, visitor_mails_path, :class => "btn btn-small pull-right"
+  
+= render 'form'
+
+.row-fluid
+  %small.muted
+    Created by: #{@visitor_mail.created_by}, Updated by: #{@visitor_mail.updated_by},
+  %small.muted
+    Created at: #{date_format @visitor_mail.created_at}, Updated at: #{date_format @visitor_mail.updated_at}

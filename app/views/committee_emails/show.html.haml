@@ -1,0 +1,40 @@
+- content_for :title do
+  Show committee email
+
+- content_for :subheader do
+  .page-header
+    %h2 Show committee email
+
+.row-fluid
+  = link_to "<i class='icon-pencil'></i>Edit".html_safe, edit_committee_email_path(@committee_email), :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
+  = link_to "<i class='icon-list'></i>Back".html_safe, committee_emails_path, :class => "btn btn-small pull-right"
+
+
+%p#notice= notice
+
+.form-horizontal
+  %fieldset
+  
+    .control-group
+      %label.control-label
+        %b Email:
+      .controls{:style => 'padding-top: 6px;'}
+        = @committee_email.email
+  
+    .control-group
+      %label.control-label
+        %b Person:
+      .controls{:style => 'padding-top: 6px;'}
+        = @committee_email.person
+  
+    .control-group
+      %label.control-label
+        %b Mobile:
+      .controls{:style => 'padding-top: 6px;'}
+        = @committee_email.mobile
+  
+.row-fluid
+  %small.muted
+    Created by: #{@committee_email.created_by}, Updated by: #{@committee_email.updated_by},
+  %small.muted
+    Created at: #{date_format @committee_email.created_at}, Updated at: #{date_format @committee_email.updated_at}

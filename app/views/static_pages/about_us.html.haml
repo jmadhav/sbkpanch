@@ -1,0 +1,45 @@
+- content_for :title do
+  About us
+  
+- content_for :navbar_about_us do
+  %li.active
+    %a{:href => "/about_us"} About us
+
+- content_for :subheader do
+  .page-header
+    %h1
+      History
+      %small of Brahma Kshatriya, Varahi Mata and Manai
+
+.row-fluid
+  .span10.offset1
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          %a{ :href => "#tab1", "data-toggle" => "tab"} Brahma Kshatriya
+        %li
+          %a{ :href => "#tab2", "data-toggle" => "tab"} Varahi Mata
+        %li
+          %a{ :href => "#tab3", "data-toggle" => "tab"} Manai
+      .tab-content
+        .tab-pane.active#tab1
+          = render "static_pages/brahma_kshatriya_history"
+        .tab-pane#tab2
+          = render "static_pages/varahi_mata_history"
+        .tab-pane#tab3
+          = render "static_pages/manai_history"
+.row-fluid
+  .span10.offset1
+    %hr
+    %blockquote.pull-center
+      %p
+        We have compiled this information through the inputs from various sources. We have taken care to 
+        cover the best possible information that we can share and it is possible that some of the things might 
+        have been left out. They are unintentional and not to hurt the sentiments of anyone. However, if any
+        one would like to add to this, may contact us for making rectification in our next volume. 
+      %small
+        Contributed and Compiled by:
+        %ul.unstyled
+          %li Laxman M. Shani
+          %li Haresh K. Godhia
+          %li Dharmesh J. Jethmalani.

@@ -1,0 +1,11 @@
+- content_for :title do
+  New Notification
+
+- content_for :subheader do
+  .page-header
+    %h2 New notification
+
+.row-fluid
+  = link_to "<i class='icon-list'></i> Back".html_safe, notifications_path, :class => "btn btn-small pull-right"
+
+= render 'form'

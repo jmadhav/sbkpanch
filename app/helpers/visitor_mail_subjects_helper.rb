@@ -1,0 +1,2 @@
+module VisitorMailSubjectsHelper
+end

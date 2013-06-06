@@ -1,0 +1,14 @@
+- content_for :title do
+  Edit <%= singular_table_name %>
+
+- content_for :subheader do
+  .page-header
+    %h2 Editing <%= singular_table_name %>
+
+.row-fluid
+  = link_to "<i class='icon-eye-open'></i> Show".html_safe, @<%= singular_table_name %>, :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
+  = link_to "<i class='icon-list'></i> Back".html_safe, <%= index_helper %>_path, :class => "btn btn-small pull-right"
+  
+= render 'form'
+
+
