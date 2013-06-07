@@ -32,8 +32,9 @@ group :development do
 end
 
 # Mutes assets pipeline log messages.
+gem 'thin'
+
 group :development do
-  gem 'thin'
   gem 'quiet_assets' 
 end
 
