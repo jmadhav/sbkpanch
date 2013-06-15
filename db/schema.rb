@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20130605160643) do
   end
 
   create_table "visitor_mails", :force => true do |t|
+    t.string   "from_name"
     t.string   "from_email"
     t.string   "from_mobile"
     t.integer  "visitor_mail_subject_id"
