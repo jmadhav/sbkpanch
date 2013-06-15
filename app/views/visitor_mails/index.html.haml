@@ -4,9 +4,9 @@
 - content_for :subheader do
   .page-header
     %h2 Listing visitor mails
-
-%h4.pull-right
-  = link_to 'New Visitor mail', new_visitor_mail_path, :class =>  'btn btn-large'
+-#
+  %h4.pull-right
+    = link_to 'New Visitor mail', new_visitor_mail_path, :class =>  'btn btn-large'
 
 %br
 
@@ -25,24 +25,26 @@
       %th Subject
       %th Message
       %th To emails
-      %th{:width =>"10%"}
       %th{:width =>"10%"} Actions
-      %th{:width =>"10%"}
+      -#
+        %th{:width =>"10%"}
+        %th{:width =>"10%"}
   %tbody
     - @visitor_mails.each do |visitor_mail|
       %tr
         %td= visitor_mail.from_email
         %td= visitor_mail.from_mobile
-        %td= visitor_mail.subject_id
+        %td= VisitorMailSubject.find(visitor_mail.visitor_mail_subject_id).subject
         %td= visitor_mail.message
         %td= visitor_mail.to_emails
         %td= link_to "<i class='icon-eye-open'></i> Show".html_safe, visitor_mail, :class => 'btn btn-small'
-        %td= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_visitor_mail_path(visitor_mail), :class => 'btn btn-small'
-        %td= link_to "<i class='icon-trash'></i> Delete".html_safe, visitor_mail, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small'
+        -#
+          %td= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_visitor_mail_path(visitor_mail), :class => 'btn btn-small'
+          %td= link_to "<i class='icon-trash'></i> Delete".html_safe, visitor_mail, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small'
 
     - if @visitor_mails.blank?
       %tr
-        %td{:colspan=>"#{5 + 3}", :style=>"text-align:center"} NO DATA AVAILABLE
+        %td{:colspan=>"#{5 + 1}", :style=>"text-align:center"} NO DATA AVAILABLE
 
 .row-fluid
   %ul.pager.pull-right

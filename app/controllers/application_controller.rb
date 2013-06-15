@@ -20,21 +20,19 @@ class ApplicationController < ActionController::Base
   end
   protected
     def check_new_notifications
-      new_notifications = false
-      if session[:new_notifications] == false
-        new_notifications =  true unless Notification.where(:notification_type => 'Death').where("date_time > ?", Time.now).blank?
-        new_notifications =  true unless Notification.where(:notification_type => 'Condolense').where("date_time > ?", Date.today.to_time).blank?
-        if  new_notifications =  true
-           session[:new_notifications] = true
-           session[:notification_checked] = false
+      new_notification = Notification.where("date_time > ?", Date.today.to_time).order('date_time DESC').first
+      unless new_notification.blank?
+        if session[:new_notification] != new_notification.id
+          session[:new_notification] = new_notification.id
+          session[:notification_checked] = false
         end
       end
     end
 
     def notification_check
       unless session.has_key? :notification_checked
-        session[:notification_checked] =  false
-        session[:new_notifications] = false
+        session[:notification_checked] =  true
+        session[:new_notification] = nil
       end
     end
 end

@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
   def notifications
    session[:notification_checked] =  true
    @death_notifications = Notification.where(:notification_type => 'Death').where("date_time > ?", Time.now).order('created_at DESC').page params[:page]
-   @condolense_notifications = Notification.where(:notification_type => 'Condolense').where("date_time > ?", Date.today.to_time).order('created_at DESC').page params[:page]
+   @condolence_notifications = Notification.where(:notification_type => 'Condolense').where("date_time > ?", Date.today.to_time).order('created_at DESC').page params[:page]
   end
 
   def activities
@@ -19,5 +19,6 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+    @visitor_mail = VisitorMail.new
   end
 end

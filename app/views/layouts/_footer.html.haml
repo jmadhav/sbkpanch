@@ -6,17 +6,15 @@
       - unless admin_signed_in?
         %li
           = link_to "Admin Login", new_admin_session_path
-
 :javascript
   $("#back-top").hide();
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100)
-      $('#back-top').fadeIn();
+      $("#back-top").fadeTo( "slow", 0.5 );
     else
-      $('#back-top').fadeOut();
+      $('#back-top').hide();
   });
   $('#back-top').click(function () {
     $('body,html').animate({scrollTop: 0}, 800);
     return false;
   });
-

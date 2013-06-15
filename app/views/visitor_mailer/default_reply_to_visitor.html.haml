@@ -1,0 +1,19 @@
+%p
+  %h2 Hi #{@visitor_name}!
+%p
+  Thanks for your interest and taking one step further to communicate with SBKPanch Committee.
+  Please donot reply to this mail.
+%p
+  Please consider this mail as a confirmation that your mail with subject #{@subject} has been sent
+  to following members of Committee:=
+  
+  - @to_emails.each_with_index do |email, index|
+    %br/
+    = "#{index + 1}.#{email}"
+%p
+  The above mentioned Committee #{pluralize(@to_emails.count, "member")} will reply back to you soon.
+%p
+  %br/
+  Thanks & Regards,
+  %br/
+  SBK Web Admin

@@ -6,7 +6,7 @@
     %h2 Show visitor_mail
 
 .row-fluid
-  = link_to "<i class='icon-pencil'></i>Edit".html_safe, edit_visitor_mail_path(@visitor_mail), :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
+  =# link_to "<i class='icon-pencil'></i>Edit".html_safe, edit_visitor_mail_path(@visitor_mail), :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
   = link_to "<i class='icon-list'></i>Back".html_safe, visitor_mails_path, :class => "btn btn-small pull-right"
 
 
@@ -31,7 +31,7 @@
       %label.control-label
         %b Subject:
       .controls{:style => 'padding-top: 6px;'}
-        = VisitorMailSubject.find(@visitor_mail.subject_id).subject
+        = VisitorMailSubject.find(@visitor_mail.visitor_mail_subject_id).subject
   
     .control-group
       %label.control-label

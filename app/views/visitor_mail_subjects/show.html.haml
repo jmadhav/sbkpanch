@@ -20,6 +20,18 @@
         %b Subject:
       .controls{:style => 'padding-top: 6px;'}
         = @visitor_mail_subject.subject
+    .control-group
+      %label.control-label
+        %b Emails:
+      .controls.controls{:style => 'padding-top: 6px;'}
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th Type:
+              %th Email:
+          %tbody
+            - @visitor_mail_subject.subject_email_details.each do |d|
+              = render 'visitor_mail_subjects/subject_email_detail', :f => d
   
 .row-fluid
   %small.muted

@@ -14,6 +14,24 @@
       = f.label :subject, :class => 'control-label'
       .controls
         = f.text_area :subject, :col => 40, :rows => 10, :required => true
+    .control-group
+      = f.label :emails, :class => 'control-label'
+      .controls
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th Type:
+              %th Email:
+              %th Actions
+          %tbody
+            = f.fields_for :subject_email_details do |d|
+              = render 'visitor_mail_subjects/subject_email_detail_fields', :f => d
+            %tr
+              %td
+              %td
+              %td
+                = link_to_add_fields( "<i class='icon-plus'></i> Add".html_safe, f, :subject_email_details)
+    
   
   .form-actions
     = f.submit 'Save', :class => 'btn btn-primary'

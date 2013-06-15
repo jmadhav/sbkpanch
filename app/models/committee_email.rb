@@ -2,6 +2,7 @@ class CommitteeEmail < ActiveRecord::Base
   attr_accessible :created_by, :disabled, :email, :mobile, :person, :updated_by
   
   # TODO => Associations
+  has_many :subject_email_details
   
   # Default Scope
   default_scope where( :disabled => false)

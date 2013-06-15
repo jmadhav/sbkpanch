@@ -1,0 +1,6 @@
+%tr
+  %td
+    = f.receiver_type
+  %td
+    -  committee_email = CommitteeEmail.find(f.committee_email_id)
+    = "#{committee_email.person} <#{committee_email.email}>"
