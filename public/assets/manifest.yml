@@ -1,4 +1,8 @@
 ---
+bootstrap-mdo-sfmoma-01.jpg: bootstrap-mdo-sfmoma-01-9e04a90402c25509eb19ee5fe76696b6.jpg
+bootstrap-mdo-sfmoma-01/index.jpg: bootstrap-mdo-sfmoma-01-9e04a90402c25509eb19ee5fe76696b6.jpg
+bootstrap-mdo-sfmoma-02.jpg: bootstrap-mdo-sfmoma-02-f3c6e682ee4380a204d6263cf2933020.jpg
+bootstrap-mdo-sfmoma-02/index.jpg: bootstrap-mdo-sfmoma-02-f3c6e682ee4380a204d6263cf2933020.jpg
 notification.svg.thumb.png: notification.svg.thumb-c23d95d2ca4b498fcd178a2e42635c1b.png
 notification/index.svg.thumb.png: notification.svg.thumb-c23d95d2ca4b498fcd178a2e42635c1b.png
 orange background.jpg: orange background-c4222e8f67c9d7136f642e5c485f293c.jpg
@@ -9,8 +13,10 @@ sbk-panch-logo.png: sbk-panch-logo-24c4e48dba3c9b0130f4ca414a386e26.png
 sbk-panch-logo/index.png: sbk-panch-logo-24c4e48dba3c9b0130f4ca414a386e26.png
 sbk-panch-title.png: sbk-panch-title-0e120468177d553149386be4eaeae753.png
 sbk-panch-title/index.png: sbk-panch-title-0e120468177d553149386be4eaeae753.png
-shree-varahi-mata-temple-at-kandivali.jpg: shree-varahi-mata-temple-at-kandivali-638735013414cd0318c33bf10380629d.jpg
-shree-varahi-mata-temple-at-kandivali/index.jpg: shree-varahi-mata-temple-at-kandivali-638735013414cd0318c33bf10380629d.jpg
+shree-varahi-mata-temple-kandivali.jpg: shree-varahi-mata-temple-kandivali-f2cb3fb88a145cff630f810f5c288914.jpg
+shree-varahi-mata-temple-kandivali/index.jpg: shree-varahi-mata-temple-kandivali-f2cb3fb88a145cff630f810f5c288914.jpg
+top.jpg: top-86110723f042e9ebf435e48356f283b3.jpg
+top/index.jpg: top-86110723f042e9ebf435e48356f283b3.jpg
 ui-lightness/ui-bg_diagonals-thick_18_b81900_40x40.png: ui-lightness/ui-bg_diagonals-thick_18_b81900_40x40-1982ad87b557e2c36776f5fa8d6aeaab.png
 ui-lightness/ui-bg_diagonals-thick_18_b81900_40x40/index.png: ui-lightness/ui-bg_diagonals-thick_18_b81900_40x40-1982ad87b557e2c36776f5fa8d6aeaab.png
 ui-lightness/ui-bg_diagonals-thick_20_666666_40x40.png: ui-lightness/ui-bg_diagonals-thick_20_666666_40x40-77de9705f966a3c9cc83be1b273945ce.png
@@ -43,8 +49,8 @@ up-arrow.png: up-arrow-b11536e032d14129d1e9226a3ea724f2.png
 up-arrow/index.png: up-arrow-b11536e032d14129d1e9226a3ea724f2.png
 application.js: application-7942f1c029813bc86f57a54df3364d1f.js
 application/index.js: application-7942f1c029813bc86f57a54df3364d1f.js
-application.css: application-e01114009e9329535f86ed513f1da52f.css
-application/index.css: application-e01114009e9329535f86ed513f1da52f.css
+application.css: application-4eb3cd193310fe316e49ea4256ee29e5.css
+application/index.css: application-4eb3cd193310fe316e49ea4256ee29e5.css
 glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings-white/index.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
