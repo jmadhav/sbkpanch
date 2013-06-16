@@ -25,7 +25,7 @@
       %thead
         %tr
           %th{ :width => "25%"} Sad Demise of
-          %th Expired On
+          %th Expired on
           %th{ :width => "50%"} Address
       %tbody
         - @death_notifications.each do |notification|
@@ -57,7 +57,7 @@
       %thead
         %tr
           %th{ :width => "25%"} Final rights for
-          %th Time
+          %th Date Time
           %th{ :width => "50%"} Address
       %tbody
         - @final_rights_notifications.each do |notification|
@@ -77,7 +77,7 @@
           = link_to_next_page @final_rights_notifications, 'Next Page'
 
     .page-header
-      %h2 Condolence Notifications
+      %h2 Condolence
     .row-fluid
       %ul.pager.pull-right
         %li
@@ -89,7 +89,7 @@
       %thead
         %tr
           %th{ :width => "25%"} Condolence for
-          %th Datetime
+          %th Date Time
           %th{ :width => "50%"} Address
       %tbody
         - @condolence_notifications.each do |notification|
