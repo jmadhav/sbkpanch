@@ -114,7 +114,7 @@ class VisitorMailsController < ApplicationController
     logger.info committee_emails["To:"].inspect
     logger.info committee_emails["Cc:"].inspect
     logger.info committee_emails["Bcc:"].inspect
-    VisitorMailer.mail_to_committee(visitor_mail[:from_name], visitor_mail[:from_email], visitor_mail[:from_mobile], committee_emails["To:"], committee_emails["Cc:"].first, committee_emails["Bcc:"], visitor_mail_subject.subject, visitor_mail[:message]).deliver
+    VisitorMailer.mail_to_committee(visitor_mail[:from_name], visitor_mail[:from_email], visitor_mail[:from_mobile], committee_emails["To:"], committee_emails["Cc:"], committee_emails["Bcc:"], visitor_mail_subject.subject, visitor_mail[:message]).deliver
     VisitorMailer.default_reply_to_visitor(visitor_mail[:from_name], visitor_mail[:from_email], committee_emails["To:"], committee_emails["Cc:"], committee_emails["Bcc:"], visitor_mail_subject.subject).deliver
   end
 end
