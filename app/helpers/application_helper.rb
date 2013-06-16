@@ -2,7 +2,7 @@ module ApplicationHelper
 
   def date_format d, format =""
     unless d.blank?
-  	  return d.strftime("%B %d, %Y %I:%M %p") if format.blank?
+  	  return d.strftime("%d-%b-%Y %I:%M %p") if format.blank?
  	    return d.strftime(format)
   	end
     ""
