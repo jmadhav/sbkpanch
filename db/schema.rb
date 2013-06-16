@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130605160643) do
   create_table "event_types", :force => true do |t|
     t.string   "name"
     t.string   "display_name"
+    t.string   "booked"
     t.text     "description"
     t.boolean  "disabled"
     t.string   "created_by"
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130605160643) do
     t.datetime "to_date_time"
     t.integer  "event_type_id"
     t.string   "booked_by"
+    t.string   "booked"
     t.text     "description"
     t.boolean  "disabled"
     t.string   "created_by"

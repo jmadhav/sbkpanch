@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :to_date_time
       t.integer :event_type_id
       t.string :booked_by
+      t.string :booked
       t.text :description
       t.boolean :disabled
       t.string :created_by

@@ -45,6 +45,12 @@
       %label.control-label
         %b Booked:
       .controls{:style => 'padding-top: 6px;'}
+        = @event.booked
+
+    .control-group
+      %label.control-label
+        %b Description:
+      .controls{:style => 'padding-top: 6px;'}
         = @event.description
 
 .row-fluid

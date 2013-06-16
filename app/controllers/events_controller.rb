@@ -44,7 +44,9 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-    @event.description = get_description params[:event][:event_type_id]
+    event_type = EventType.find(params[:event][:event_type_id])
+    @event.description = event_type.description
+    @event.booked = event_type.booked
     @event.created_by = current_admin.email
     @event.updated_by = current_admin.email
     respond_to do |format|
@@ -62,7 +64,9 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-    @event.description = get_description params[:event][:event_type_id]
+    event_type = EventType.find(params[:event][:event_type_id])
+    @event.description = event_type.description
+    @event.booked = event_type.booked
     @event.updated_by = current_admin.email
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -87,9 +91,4 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  protected
-    def get_description event_type_id
-      EventType.find(event_type_id).description
-    end
 end

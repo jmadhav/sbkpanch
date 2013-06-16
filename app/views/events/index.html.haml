@@ -20,29 +20,31 @@
 %table.table.table-striped
   %thead
     %tr
-      %th From date time
-      %th To date time
-      %th Event type
-      %th Booked by
+      %th Date
+      %th Event
+      %th Schedule
+      %th Description
       %th Booked
+      %th Booked by
       %th{:width =>"10%"}
       %th{:width =>"10%"} Actions
       %th{:width =>"10%"}
   %tbody
     - @events.each do |event|
       %tr
-        %td= date_format event.from_date_time
-        %td= date_format event.to_date_time
+        %td= date_format event.from_date_time, "%d-%b-%Y"
         %td= EventType.find(event.event_type_id).display_name
-        %td= event.booked_by
+        %td= "#{ date_format event.from_date_time, '%I:%M %p' } - #{date_format event.to_date_time, '%I:%M %p'} "
         %td= event.description
+        %td= event.booked
+        %td= event.booked_by
         %td= link_to "<i class='icon-eye-open'></i> Show".html_safe, event, :class => 'btn btn-small'
         %td= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_event_path(event), :class => 'btn btn-small'
         %td= link_to "<i class='icon-trash'></i> Delete".html_safe, event, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small'
 
     - if @events.blank?
       %tr
-        %td{:colspan=>"#{5 + 3}", :style=>"text-align:center"} NO DATA AVAILABLE
+        %td{:colspan=>"#{6 + 3}", :style=>"text-align:center"} NO DATA AVAILABLE
 
 .row-fluid
   %ul.pager.pull-right

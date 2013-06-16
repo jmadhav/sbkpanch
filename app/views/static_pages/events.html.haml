@@ -22,24 +22,24 @@
     %table.table.table-striped.table-bordered
       %thead
         %tr
-          %th Event type
-          %th Booked by
+          %th Date
+          %th Event
+          %th Schedule
+          %th Description
           %th Booked
-          %th From date time
-          %th To date time
-      %tbody
+          %th Booked by
+          %tbody
         - @events.each do |event|
           %tr
-            %td
-              %b= EventType.find(event.event_type_id).display_name
-            %td= event.booked_by
+            %td= date_format event.from_date_time, "%d-%b-%Y"
+            %td= EventType.find(event.event_type_id).display_name
+            %td= "#{ date_format event.from_date_time, '%I:%M %p' } - #{date_format event.to_date_time, '%I:%M %p'} "
             %td= event.description
-            %td= date_format event.from_date_time
-            %td= date_format event.to_date_time
-
+            %td= event.booked
+            %td= event.booked_by
         - if @events.blank?
           %tr
-            %td{:colspan=>"5", :style=>"text-align:center"} NO EVENTS SCHEDULED
+            %td{:colspan=>"6", :style=>"text-align:center"} NO EVENTS SCHEDULED
 
     .row-fluid
       %ul.pager.pull-right
