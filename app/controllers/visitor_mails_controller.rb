@@ -52,7 +52,7 @@ class VisitorMailsController < ApplicationController
     @visitor_mail.to_emails = get_to_emails committee_emails
     respond_to do |format|
       if @visitor_mail.save
-        format.html { redirect_to contact_path, notice: 'Thanks for writing to us. Your Email has sent concerned person. Please check your inbox for confirmation of email.' }
+        format.html { redirect_to contact_path, notice: 'Thanks for writing to us. Your Email has been sent to concerned person. Please check your inbox for confirmation of email.' }
         format.json { render json: @visitor_mail, status: :created, location: @visitor_mail }
       else
         format.html { render action: "new" }
