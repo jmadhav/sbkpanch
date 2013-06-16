@@ -1,5 +1,5 @@
 class EventType < ActiveRecord::Base
-  attr_accessible :created_by, :description, :disabled, :display_name, :name, :updated_by, :event_type_item_details_attributes
+  attr_accessible :created_by, :description, :disabled, :display_name, :name, :booked, :updated_by, :event_type_item_details_attributes
 
   # Associations
   has_many :events
@@ -10,7 +10,7 @@ class EventType < ActiveRecord::Base
   default_scope where( :disabled => false)
 
   # Validations
-  validates_presence_of  :name, :display_name, :created_by, :updated_by
+  validates_presence_of  :name, :display_name, :booked, :created_by, :updated_by
   validates_uniqueness_of :name
   validates_inclusion_of :disabled, in: [true, false]
   validate :validate_event_type_item_details
