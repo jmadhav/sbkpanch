@@ -16,7 +16,7 @@
     .control-group
       = f.label :type, "Type", :class => 'control-label'
       .controls
-        = f.select :notification_type, ['Death', 'Final Rights', 'Condolence'], :class => 'select_field', :required => true
+        = f.select :notification_type, ['Death', 'Final Rights', 'Condolence'], {:include_blank => false}, :required => true
     .control-group
       = f.label :death_of, "Death of", :class => 'control-label'
       .controls
@@ -34,6 +34,6 @@
           controlType: 'select',
           dateFormat: 'M dd, yy',
           timeFormat: 'hh:mm tt',
-          stepMinute: 30
+          stepMinute: 15
     });
   });

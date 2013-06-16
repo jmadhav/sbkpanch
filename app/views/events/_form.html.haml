@@ -23,7 +23,7 @@
     .control-group
       = f.label :event_type_id, :class => 'control-label'
       .controls
-        = f.select :event_type_id, EventType.all.map{ |e| ["#{e.name} => #{e.display_name}", e.id]}, :required => true
+        = f.select :event_type_id, EventType.all.map{ |e| ["#{e.name} => #{e.display_name}", e.id]}, {:include_blank => false}, :required => true
   
     .control-group
       = f.label :booked_by, :class => 'control-label'
@@ -40,12 +40,12 @@
           controlType: 'select',
           dateFormat: 'M dd, yy',
           timeFormat: 'hh:mm tt',
-          stepMinute: 30
+          stepMinute: 15
     });
     $('#event_to_date_time').datetimepicker({
           controlType: 'select',
           dateFormat: 'M dd, yy',
           timeFormat: 'hh:mm tt',
-          stepMinute: 30
+          stepMinute: 15
     });
   });

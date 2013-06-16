@@ -1,5 +1,5 @@
 %tr.fields
   %td
-    = f.select :item_id, Item.all.map{|i| [i.name , i.id]}, :class => 'select_field', :required => true
+    = f.select :item_id, Item.all.map{|i| [i.name , i.id]}, {:include_blank => false}, :required => true
   %td
     = link_to_remove_fields("<i class='icon-trash'></i> Delete".html_safe, f)
