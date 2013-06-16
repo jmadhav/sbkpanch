@@ -22,4 +22,7 @@ class StaticPagesController < ApplicationController
   def contact
     @visitor_mail = VisitorMail.new
   end
+  
+  def credits
+  end
 end

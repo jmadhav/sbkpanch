@@ -42,6 +42,8 @@ PhaseOne::Application.routes.draw do
 
   match "contact" => "static_pages#contact"
 
+  match "credits" => "static_pages#credits"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
