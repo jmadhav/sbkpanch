@@ -43,8 +43,9 @@ class EventTypesController < ApplicationController
   # POST /event_types
   # POST /event_types.json
   def create
+    logger.info params[:event_type].inspect
     @event_type = EventType.new(params[:event_type])
-    @event_type.description = get_description(params[:event_type][:event_type_item_details_attributes])
+    @event_type.booked = get_booked(params[:event_type][:event_type_item_details_attributes])
     @event_type.created_by = current_admin.email
     @event_type.updated_by = current_admin.email
     respond_to do |format|
@@ -62,7 +63,7 @@ class EventTypesController < ApplicationController
   # PUT /event_types/1.json
   def update
     @event_type = EventType.find(params[:id])
-    @event_type.description = get_description(params[:event_type][:event_type_item_details_attributes])
+    @event_type.booked = get_booked(params[:event_type][:event_type_item_details_attributes])
     @event_type.updated_by = current_admin.email
     respond_to do |format|
       if @event_type.update_attributes(params[:event_type])
@@ -89,24 +90,24 @@ class EventTypesController < ApplicationController
   end
   
   protected
-    def get_description items
-      logger.info items.inspect
+    def get_booked items
       unless items.blank?
-      items = items.collect{ |k,v| unless (v["_destroy"] == 1); Item.find(v['item_id']).name; end  }
+        items = items.collect{ |k,v| unless (v["_destroy"].to_i == 1); Item.find(v['item_id']).name; end  }
+        items.delete(nil)
       else
         items = []
       end
-      count, description = 1, ""
+      count, booked = 1, ""
       items.each do |i|
         if count == 1
-          description = description + i 
+          booked = booked + i 
         elsif count == items.size && items.size > 1
-          description = description + " and " + i
+          booked = booked + " and " + i
         else
-          description =  description + ", " + i 
+          booked = booked + ", " + i 
         end
         count += 1
       end
-      description
+      booked
     end
 end

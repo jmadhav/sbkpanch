@@ -26,12 +26,18 @@
         %b Display name:
       .controls{:style => 'padding-top: 6px;'}
         = @event_type.display_name
+
+    .control-group
+      %label.control-label
+        %b Description:
+      .controls{:style => 'padding-top: 6px;'}
+        = @event_type.description
   
     .control-group
       %label.control-label
         %b Booked:
       .controls{:style => 'padding-top: 6px;'}
-        = @event_type.description
+        = @event_type.booked
   
 .row-fluid
   %small.muted

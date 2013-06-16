@@ -3,6 +3,7 @@ class CreateEventTypes < ActiveRecord::Migration
     create_table :event_types do |t|
       t.string :name
       t.string :display_name
+      t.string :booked
       t.text :description
       t.boolean :disabled
       t.string :created_by

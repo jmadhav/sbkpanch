@@ -21,6 +21,11 @@
         = f.text_field :display_name,  :class => 'text_field', :required => true
 
     .control-group
+      = f.label :description, :class => 'control-label'
+      .controls
+        = f.text_field :description,  :class => 'text_field', :required => true
+
+    .control-group
       = f.label :booked, :class => 'control-label'
       .controls
         %table.table.table-bordered

@@ -22,6 +22,7 @@
     %tr
       %th Name
       %th Display name
+      %th Description
       %th Booked
       %th{:width =>"10%"}
       %th{:width =>"10%"} Actions
@@ -32,6 +33,7 @@
         %td= event_type.name
         %td= event_type.display_name
         %td= event_type.description
+        %td= event_type.booked
         %td= link_to "<i class='icon-eye-open'></i> Show".html_safe, event_type, :class => 'btn btn-small'
         %td= link_to "<i class='icon-pencil'></i> Edit".html_safe, edit_event_type_path(event_type), :class => 'btn btn-small'
         %td= link_to "<i class='icon-trash'></i> Delete".html_safe, event_type, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small'
