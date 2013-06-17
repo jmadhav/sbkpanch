@@ -111,10 +111,10 @@ class VisitorMailsController < ApplicationController
   end
 
   def send_corresponding_mails committee_emails, visitor_mail_subject,visitor_mail
-    logger.info committee_emails["To:"].inspect
-    logger.info committee_emails["Cc:"].inspect
-    logger.info committee_emails["Bcc:"].inspect
-    VisitorMailer.mail_to_committee(visitor_mail[:from_name], visitor_mail[:from_email], visitor_mail[:from_mobile], committee_emails["To:"], committee_emails["Cc:"], committee_emails["Bcc:"], visitor_mail_subject.subject, visitor_mail[:message]).deliver
-    VisitorMailer.default_reply_to_visitor(visitor_mail[:from_name], visitor_mail[:from_email], committee_emails["To:"], committee_emails["Cc:"], committee_emails["Bcc:"], visitor_mail_subject.subject).deliver
+    to_emails = committee_emails["To:"]
+    cc_email  = committee_emails["Cc:"].blank? ? nil : committee_emails["Cc:"].first
+    bcc_email = committee_emails["Bcc:"].blank? ? nil : committee_emails["Bcc:"].first
+    VisitorMailer.mail_to_committee(visitor_mail[:from_name], visitor_mail[:from_email], visitor_mail[:from_mobile], to_emails, cc_email, bcc_email, visitor_mail_subject.subject, visitor_mail[:message]).deliver
+    VisitorMailer.default_reply_to_visitor(visitor_mail[:from_name], visitor_mail[:from_email], to_emails, cc_email, bcc_email, visitor_mail_subject.subject).deliver
   end
 end

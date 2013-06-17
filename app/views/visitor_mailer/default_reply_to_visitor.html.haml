@@ -9,7 +9,7 @@
   
   - @to_emails.each_with_index do |email, index|
     %br/
-    = "#{index + 1}.#{email}"
+    = "#{index + 1}.#{email}".html_safe
 %p
   The above mentioned Committee #{pluralize(@to_emails.count, "member")} will reply back to you soon.
 %p

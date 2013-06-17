@@ -16,8 +16,14 @@ class VisitorMailSubject < ActiveRecord::Base
   validate :validate_subject_email_details
   
   def validate_subject_email_details
-    row_count = 0
-    self.subject_email_details.each{ |d| if (d._destroy == false); row_count +=1; end }
+    row_count, cc_count, bcc_count = 0, 0, 0
+    self.subject_email_details.each do |d|
+      row_count += 1  if (d._destroy == false)
+      cc_count += 1 if d.receiver_type == "Cc:"
+      bcc_count += 1 if d.receiver_type == "Bcc:"
+    end
+    self.errors.add(:base, "Only single Cc: receiver type is allowed") if cc_count > 1
+    self.errors.add(:base, "Only single Bcc: receiver type is allowed") if bcc_count > 1
     self.errors.add(:base, "Please enter Emails for #{self.class.to_s} ")  if row_count == 0
   end
 end
