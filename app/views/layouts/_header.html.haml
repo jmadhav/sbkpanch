@@ -1,13 +1,19 @@
 %header
   %nav.navbar.navbar-fixed-top.navbar-inverse
+    .container.layer1
+      .row-fluid.logo.pull-center
+        %a{:href => "/"}
+          %img{:alt => "Sindhi Bhrama Kshatriya Panch", :src => "/assets/sbk-panch-title.png"}/
+        %p#back-top>
+          %a{:href => "#top"}>
+            %img{:src => "/assets/top.jpg"}
     .navbar-inner
-      .container
+      .container.layer2
         %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.brand{:href => "/"}
-          SBK Panch
+        %a.brand{ :href => "#"}
         .nav-collapse
           %ul.nav.pull-right
             - if content_for?(:navbar_home)

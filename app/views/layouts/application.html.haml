@@ -14,12 +14,7 @@
 %body
   / Page Header
   = render "layouts/header"
-  .container
-    .row-fluid.logo.pull-center
-      %img{:alt => "Sindhi Bhrama Kshatriya Panch", :src => "/assets/sbk-panch-title.png"}/
-      %p#back-top>
-        %a{:href => "#top"}>
-          %img{:src => "/assets/top.jpg"}
+  .container{ :style =>"margin-top: -40px;" }
     = yield :subheader
     - unless alert.blank?
       %br

@@ -6,12 +6,12 @@ $navbarBrandColor: orange;
 @import "bootstrap";
 
 body {
-    padding-top: 60px;
+    padding-top: 190px;
 };
 
 @media (min-width: 1200px) {
   .container{
-    width: 960px !important
+    width: 960px !important;
   }
 }
 
@@ -25,12 +25,23 @@ a:hover,a:active{
 
 /*  Navbar            */
 /*--------------------*/
+.layer1 {
+  z-index: 1;
+  position: relative;
+}
+
+.layer2 {
+  top:-40px;
+  z-index: 2;
+  position: relative;
+}
+
 .container .brand {
   *margin-left: 20px;
 }
 
 .navbar-inverse .navbar-inner {
-  background-color: white;
+  background-color: transparent;
   background-image: none;
   background-repeat: repeat-x;
   filter: none;
@@ -65,16 +76,30 @@ a:hover,a:active{
   text-shadow: none;
 }
 
-.navbar-inverse .brand:hover, .navbar-inverse .nav > li > a:hover {
-  color: orange;
-}
 
+@media (min-width: 1200px) {
+  .navbar-inverse .brand:hover, .navbar-inverse .nav > li > a:hover {
+    color: white !important;
+  }
+
+  .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+    color: white !important;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
 .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
   color: orange;
   background-color: transparent;
   -webkit-box-shadow: none;
   moz-box-shadow: none;
   box-shadow: none;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {
+  border-width: 0px;
 }
 
 /* Home Page          */
