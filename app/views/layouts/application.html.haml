@@ -14,12 +14,14 @@
 %body
   / Page Header
   = render "layouts/header"
-  .container{ :style =>"margin-top: -40px;" }
-    = yield :subheader
-    - unless alert.blank?
-      %br
-      %p.alert
-        = alert
-    = yield
-    / Page Footer
-    = render "layouts/footer"
+  .container#body
+    %section
+      .row-fluid
+        = yield :subheader
+        - unless alert.blank?
+          %br
+          %p.alert
+            = alert
+        = yield
+        / Page Footer
+        = render "layouts/footer"
