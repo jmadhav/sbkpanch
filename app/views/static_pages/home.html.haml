@@ -6,27 +6,35 @@
     %a{:href => "/"} Home
 
 
-%section.carousel
+%section
   #myCarousel.carousel.slide
-    -#
-      %ol.carousel-indicators
-        %li.active{ "data-target" => "#myCarousel", "data-slide-to" => "0"}
-        %li{ "data-target" => "#myCarousel", "data-slide-to" => "1"}
+    %ol.carousel-indicators
+      %li.active{ "data-target" => "#myCarousel", "data-slide-to" => "0"}
+      %li{ "data-target" => "#myCarousel", "data-slide-to" => "1"}
+      %li{ "data-target" => "#myCarousel", "data-slide-to" => "2"}
     .carousel-inner
       .item.active
-        %img{:alt => "Shree Varahi Mata Temple at Kandivali", :src => "/assets/shree-varahi-mata-temple-kandivali.jpg"}/
+        %img{:alt => "Shree Varahi Mata Temple at Kandivali", :src => "/assets/shree-varahi-mata-temple-at-kandivali.jpg"}/
         -#
           .carousel-caption
             %h1 Example headline.
             %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
             %a.btn.btn-large.btn-primary{:href => "#"} Sign up today
       .item
-        %img{:alt => "Shree Varahi Mata Temple at Kandivali", :src => "/assets/shree-varahi-mata-temple-kandivali.jpg"}/
+        %img{:alt => "Shree Varahi Mata Temple at Ulhasnagar and Rajkot", :src => "/assets/shree-varahi-mata-temple-at-ulhasnagar-and-rajkot.jpg"}/
         -#
           .carousel-caption
             %h1 Another example headline.
             %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
             %a.btn.btn-large.btn-primary{:href => "#"} Learn more
+      .item
+        %img{:alt => "Avatars of Shree Varahi Mata", :src => "/assets/avatars-of-shree-varahi-mata.jpg"}/
+        -#
+          .carousel-caption
+            %h1 Another example headline.
+            %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            %a.btn.btn-large.btn-primary{:href => "#"} Learn more
+
     %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"} ‹
     %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"} ›
 .page-header
