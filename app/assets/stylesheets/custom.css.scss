@@ -6,7 +6,7 @@ $navbarBrandColor: orange;
 @import "bootstrap";
 
 body {
-    padding-top: 190px;
+    padding-top: 150px;
 };
 
 @media (min-width: 1200px) {
@@ -83,6 +83,7 @@ a:hover,a:active{
   }
 
   .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+    font-family: verdana, arial, helvetica, sans-serif;
     color: white !important;
     background-color: transparent;
     -webkit-box-shadow: none;
