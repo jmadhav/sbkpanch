@@ -30,7 +30,8 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.1.1.0)
+    bootstrap-sass (2.3.2.0)
+      sass (~> 3.2)
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -143,8 +144,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 2.1.0)
-  coffee-rails (~> 3.2.1)
+  bootstrap-sass
+  coffee-rails
   devise
   exception_notification
   haml-rails
@@ -155,7 +156,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 3.2.9)
   rails3-generators
-  sass-rails (~> 3.2.3)
+  sass-rails
   sqlite3
   therubyracer
   thin
