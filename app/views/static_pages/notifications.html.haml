@@ -11,102 +11,101 @@
       Current Notifications
 
 .row-fluid
-  .span10.offset1
-    .page-header
-      %h2 Sad Demise
-    .row-fluid
-      %ul.pager.pull-right
-        %li
-          = link_to_previous_page @death_notifications, 'Previous Page'
-        %li
-          = link_to_next_page @death_notifications, 'Next Page'
+  .page-header
+    %h2 Sad Demise
+  .row-fluid
+    %ul.pager.pull-right
+      %li
+        = link_to_previous_page @death_notifications, 'Previous Page'
+      %li
+        = link_to_next_page @death_notifications, 'Next Page'
 
-    %table.table.table-striped.table-bordered
-      %thead
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th{ :width => "25%"} Sad Demise of
+        %th Expired on
+        %th{ :width => "50%"} Address
+    %tbody
+      - @death_notifications.each do |notification|
         %tr
-          %th{ :width => "25%"} Sad Demise of
-          %th Expired on
-          %th{ :width => "50%"} Address
-      %tbody
-        - @death_notifications.each do |notification|
-          %tr
-            %td= notification.death_of
-            %td= date_format notification.date_time, "%d-%b-%Y"
-            %td= notification.address
-        - if @death_notifications.blank?
-          %tr
-            %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
-
-    .row-fluid
-      %ul.pager.pull-right
-        %li
-          = link_to_previous_page @death_notifications, 'Previous Page'
-        %li
-          = link_to_next_page @death_notifications, 'Next Page'
-    
-    .page-header
-      %h2 Final Rites
-    .row-fluid
-      %ul.pager.pull-right
-        %li
-          = link_to_previous_page @final_rights_notifications, 'Previous Page'
-        %li
-          = link_to_next_page @final_rights_notifications, 'Next Page'
-
-    %table.table.table-striped.table-bordered
-      %thead
+          %td= notification.death_of
+          %td= date_format notification.date_time, "%d-%b-%Y"
+          %td= notification.address
+      - if @death_notifications.blank?
         %tr
-          %th{ :width => "25%"} Final rites for
-          %th Date Time
-          %th{ :width => "50%"} Address
-      %tbody
-        - @final_rights_notifications.each do |notification|
-          %tr
-            %td= notification.death_of
-            %td= date_format notification.date_time
-            %td= notification.address
-        - if @final_rights_notifications.blank?
-          %tr
-            %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
+          %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
 
-    .row-fluid
-      %ul.pager.pull-right
-        %li
-          = link_to_previous_page @final_rights_notifications, 'Previous Page'
-        %li
-          = link_to_next_page @final_rights_notifications, 'Next Page'
+  .row-fluid
+    %ul.pager.pull-right
+      %li
+        = link_to_previous_page @death_notifications, 'Previous Page'
+      %li
+        = link_to_next_page @death_notifications, 'Next Page'
+  
+  .page-header
+    %h2 Final Rites
+  .row-fluid
+    %ul.pager.pull-right
+      %li
+        = link_to_previous_page @final_rights_notifications, 'Previous Page'
+      %li
+        = link_to_next_page @final_rights_notifications, 'Next Page'
 
-    .page-header
-      %h2 Condolence
-    .row-fluid
-      %ul.pager.pull-right
-        %li
-          = link_to_previous_page @condolence_notifications, 'Previous Page'
-        %li
-          = link_to_next_page @condolence_notifications, 'Next Page'
-
-    %table.table.table-striped.table-bordered
-      %thead
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th{ :width => "25%"} Final rites for
+        %th Date Time
+        %th{ :width => "50%"} Address
+    %tbody
+      - @final_rights_notifications.each do |notification|
         %tr
-          %th{ :width => "25%"} Condolence for
-          %th Date Time
-          %th{ :width => "50%"} Address
-      %tbody
-        - @condolence_notifications.each do |notification|
-          %tr
-            %td= notification.death_of
-            %td= date_format notification.date_time
-            %td= notification.address
-        - if @condolence_notifications.blank?
-          %tr
-            %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
+          %td= notification.death_of
+          %td= date_format notification.date_time
+          %td= notification.address
+      - if @final_rights_notifications.blank?
+        %tr
+          %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
 
-    .row-fluid
-      %ul.pager.pull-right
-        %li
-          = link_to_previous_page @condolence_notifications, 'Previous Page'
-        %li
-          = link_to_next_page @condolence_notifications, 'Next Page'
+  .row-fluid
+    %ul.pager.pull-right
+      %li
+        = link_to_previous_page @final_rights_notifications, 'Previous Page'
+      %li
+        = link_to_next_page @final_rights_notifications, 'Next Page'
+
+  .page-header
+    %h2 Condolence
+  .row-fluid
+    %ul.pager.pull-right
+      %li
+        = link_to_previous_page @condolence_notifications, 'Previous Page'
+      %li
+        = link_to_next_page @condolence_notifications, 'Next Page'
+
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th{ :width => "25%"} Condolence for
+        %th Date Time
+        %th{ :width => "50%"} Address
+    %tbody
+      - @condolence_notifications.each do |notification|
+        %tr
+          %td= notification.death_of
+          %td= date_format notification.date_time
+          %td= notification.address
+      - if @condolence_notifications.blank?
+        %tr
+          %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
+
+  .row-fluid
+    %ul.pager.pull-right
+      %li
+        = link_to_previous_page @condolence_notifications, 'Previous Page'
+      %li
+        = link_to_next_page @condolence_notifications, 'Next Page'
 
 :javascript
    window.setTimeout('location.reload()', 60000);
