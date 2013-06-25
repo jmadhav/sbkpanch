@@ -5,8 +5,6 @@
   %li.active
     %a{:href => "/"} Home
 
-
-
 #myCarousel.carousel.slide
   %ol.carousel-indicators
     %li.active{ "data-target" => "#myCarousel", "data-slide-to" => "0"}
@@ -37,13 +35,36 @@
 
   %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"} ‹
   %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"} ›
-.page-header
-  %h1
-    Welcome
 .row-fluid
-  .span10.offset1
-    %p This is  first phase of SBK Panch that have come to completion.
-    %p Welcome content will be added over here.
+  .page-header
+    %h3
+      Welcome
+  .row-fluid
+    .span10.offset1
+      %p 
+        Greetings from Shree Taluka Borivali Sindhi Brahma Kshatriya Panchyat,
+        We the members of the managing committee feel proud and privileged to introduce our web 
+        site with first phase having basic information but lot for our bondage. It has been our endeavor 
+        to excel in our efforts to project our Kuldevi Shree Varahi Mata and our Shree Taluka Borivali 
+        Sindhi Brahma Kshatriya Panchayat to the World and to our own youngsters.
+      %p
+        With limited resources at our disposal, but with abundant talent of our young team of Committee 
+        members and boys of our community who worked tireless, with full devotion of Service to the 
+        community, we have been able to achieve this as FIRST phase of our site. We are quite confident 
+        that you will find the site interesting and surely link us to your favourate browser. 
+      %p 
+        At the time of your reading this, we have already commenced our Second phase with much 
+        better utilities for communication amongst members across the globe and that too from the 
+        comfort of their Home, Office, 24x7 on mobile etc.
+      %p 
+        YES ! We are evolving and would certainly appreciate if you have any suggestions, 
+        contributions by way of Photographs, Poems, which you feel that may be shared, Please come 
+        forward and lets do it together because we always believed in TEAM work ( Together Everyone 
+        Achieves More). 
+      %p Looking forward to your continued patronage and valuable comments and suggestions.
+      %p Admin Team of SBK Panch
 
 :javascript
-  $('.carousel').carousel()
+  $(document).ready(function(){
+        $('.carousel').carousel();
+  });
