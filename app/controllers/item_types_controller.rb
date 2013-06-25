@@ -48,7 +48,7 @@ class ItemTypesController < ApplicationController
     @item_type.updated_by = current_admin.email
     respond_to do |format|
       if @item_type.save
-        format.html { redirect_to @item_type, notice: 'Item type was successfully created.' }
+        format.html { redirect_to item_types_url, notice: 'Item type was successfully created.' }
         format.json { render json: @item_type, status: :created, location: @item_type }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class ItemTypesController < ApplicationController
     @item_type.updated_by = current_admin.email
     respond_to do |format|
       if @item_type.update_attributes(params[:item_type])
-        format.html { redirect_to @item_type, notice: 'Item type was successfully updated.' }
+        format.html { redirect_to item_types_url, notice: 'Item type was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

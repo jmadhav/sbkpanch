@@ -48,7 +48,7 @@ class CommitteeEmailsController < ApplicationController
     @committee_email.updated_by = current_admin.email
     respond_to do |format|
       if @committee_email.save
-        format.html { redirect_to @committee_email, notice: 'Committee email was successfully created.' }
+        format.html { redirect_to committee_emails_url, notice: 'Committee email was successfully created.' }
         format.json { render json: @committee_email, status: :created, location: @committee_email }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class CommitteeEmailsController < ApplicationController
     @committee_email.updated_by = current_admin.email
     respond_to do |format|
       if @committee_email.update_attributes(params[:committee_email])
-        format.html { redirect_to @committee_email, notice: 'Committee email was successfully updated.' }
+        format.html { redirect_to committee_emails_url, notice: 'Committee email was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

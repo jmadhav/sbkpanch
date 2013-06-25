@@ -48,7 +48,7 @@ class UomsController < ApplicationController
     @uom.updated_by = current_admin.email
     respond_to do |format|
       if @uom.save
-        format.html { redirect_to @uom, notice: 'Uom was successfully created.' }
+        format.html { redirect_to uoms_url, notice: 'Uom was successfully created.' }
         format.json { render json: @uom, status: :created, location: @uom }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class UomsController < ApplicationController
     @uom.updated_by = current_admin.email
     respond_to do |format|
       if @uom.update_attributes(params[:uom])
-        format.html { redirect_to @uom, notice: 'Uom was successfully updated.' }
+        format.html { redirect_to uoms_url, notice: 'Uom was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

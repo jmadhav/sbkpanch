@@ -1,7 +1,8 @@
 class VisitorMailsController < ApplicationController
   
-  before_filter  :login_required, :except => [:create]
-  
+  before_filter :login_required, :except => [:create]
+  before_filter :admins_not_allowed, :only => [:create, :edit, :update]
+
   # GET /visitor_mails
   # GET /visitor_mails.json
   def index
@@ -91,6 +92,10 @@ class VisitorMailsController < ApplicationController
   end
 
   protected
+
+  def admins_not_allowed
+    redirect_to visitor_mails_path, :alert => 'Sorry you are not authorized to create, modify or delete Visitor Mails'  if admin_signed_in? # calling devise generated method
+  end
 
   def get_to_emails committee_emails
     to_emails = ""

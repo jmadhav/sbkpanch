@@ -49,7 +49,7 @@ class VisitorMailSubjectsController < ApplicationController
 
     respond_to do |format|
       if @visitor_mail_subject.save
-        format.html { redirect_to @visitor_mail_subject, notice: 'Visitor mail subject was successfully created.' }
+        format.html { redirect_to visitor_mail_subjects_url, notice: 'Visitor mail subject was successfully created.' }
         format.json { render json: @visitor_mail_subject, status: :created, location: @visitor_mail_subject }
       else
         format.html { render action: "new" }
@@ -65,7 +65,7 @@ class VisitorMailSubjectsController < ApplicationController
     @visitor_mail_subject.updated_by = current_admin.email
     respond_to do |format|
       if @visitor_mail_subject.update_attributes(params[:visitor_mail_subject])
-        format.html { redirect_to @visitor_mail_subject, notice: 'Visitor mail subject was successfully updated.' }
+        format.html { redirect_to visitor_mail_subjects_url, notice: 'Visitor mail subject was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
