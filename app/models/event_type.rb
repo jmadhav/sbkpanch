@@ -12,7 +12,7 @@ class EventType < ActiveRecord::Base
   # Validations
   validates_presence_of  :name, :display_name, :booked, :description, :created_by, :updated_by
   validates_length_of :description, :maximum => 50
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :scope => :display_name
   validates_inclusion_of :disabled, in: [true, false]
   validate :validate_event_type_item_details
   
