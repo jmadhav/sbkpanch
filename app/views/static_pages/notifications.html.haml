@@ -48,9 +48,9 @@
   .row-fluid
     %ul.pager.pull-right
       %li
-        = link_to_previous_page @final_rights_notifications, 'Previous Page'
+        = link_to_previous_page @final_rites_notifications, 'Previous Page'
       %li
-        = link_to_next_page @final_rights_notifications, 'Next Page'
+        = link_to_next_page @final_rites_notifications, 'Next Page'
 
   %table.table.table-striped.table-bordered
     %thead
@@ -59,21 +59,21 @@
         %th Date Time
         %th{ :width => "50%"} Address
     %tbody
-      - @final_rights_notifications.each do |notification|
+      - @final_rites_notifications.each do |notification|
         %tr
           %td= notification.death_of
           %td= date_format notification.date_time
           %td= notification.address
-      - if @final_rights_notifications.blank?
+      - if @final_rites_notifications.blank?
         %tr
           %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
 
   .row-fluid
     %ul.pager.pull-right
       %li
-        = link_to_previous_page @final_rights_notifications, 'Previous Page'
+        = link_to_previous_page @final_rites_notifications, 'Previous Page'
       %li
-        = link_to_next_page @final_rights_notifications, 'Next Page'
+        = link_to_next_page @final_rites_notifications, 'Next Page'
 
   .page-header
     %h2 Condolence
