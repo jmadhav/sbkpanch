@@ -32,6 +32,18 @@ body {
 
 @import "bootstrap-responsive";
 
+.control-group#remember-me {
+  margin-bottom: 0px;
+}
+
+#sign_in_from .form-actions {
+  margin-top: 0px;
+}
+.form-actions {
+  background-color: white;
+  border-top: none;
+}
+
 .pull-center {
   text-align: center;
 }

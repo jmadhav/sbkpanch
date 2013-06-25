@@ -17,12 +17,12 @@
       .controls
         = f.password_field :password, :class => 'text_field', :required => true
 
-  - if devise_mapping.rememberable?
-    .control-group
-      .controls
-        %label.checkbox
-          = f.check_box :remember_me 
-          Remember me
+    - if devise_mapping.rememberable?
+      .control-group#remember-me
+        .controls
+          %label.checkbox
+            = f.check_box :remember_me 
+            Remember me
   .form-actions
     = f.submit "Sign in"
     %br
