@@ -1,13 +1,29 @@
 %footer.footer
-  %small
-    &copy; SBK Panch 2013
-  %nav
-    %ul
-      %li
-        = link_to "Credits", credits_path
+  .span3
+    %p.pull-center
+      Developed & Supported with devotion by 
+      = link_to '@jmadhav', 'https://twitter.com/jmadhav'
+  .span6
+    %p.pull-center
+      &copy; 2013 Shree Taluka Borivali Sindhi Brahma Kshtriya Panch
+    %p.pull-center
+      View the code on 
+      = link_to 'GitHub', '#'
+      licensed under 
+      = link_to 'MIT License', 'http://opensource.org/licenses/MIT'
+  .span3
+    %p.pull-center
+      = link_to "Credits", credits_path
       - unless admin_signed_in?
-        %li
-          = link_to "Admin Login", new_admin_session_path
+        |
+        = link_to "Admin Login", new_admin_session_path
+    %p.pull-center
+      = link_to "Tasks", '#'
+      |
+      = link_to "Issues", '#'
+      |
+      = link_to "Changelog", '#'
+
 :javascript
   $("#back-top").hide();
   $(window).scroll(function () {
