@@ -23,7 +23,7 @@
     .control-group
       = f.label :event_type_id, :class => 'control-label'
       .controls
-        = f.select :event_type_id, EventType.all.map{ |e| ["#{e.name} => #{e.display_name}", e.id]}, {:include_blank => false}, :required => true
+        = f.select :event_type_id, EventType.order('display_name, name').map{ |e| ["#{e.display_name} => #{e.name}", e.id]}, {:include_blank => false}, :required => true
   
     .control-group
       = f.label :booked_by, :class => 'control-label'
