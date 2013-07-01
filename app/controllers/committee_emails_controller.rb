@@ -58,6 +58,5 @@ class CommitteeEmailsController < ApplicationController
     @committee_email.save
 
     redirect_to committee_emails_url
-    end
   end
 end
