@@ -12,6 +12,7 @@ capybara-*.html
 /vendor/gems
 /vendor/binstubs
 /vendor/bundle_gems
+/vendor/bundle
 /log/*
 /tmp/*
 /db/*.sqlite3
@@ -23,3 +24,4 @@ rerun.txt
 pickle-email-*.html
 .DS_Store
 bin/
+pickle-email-*.html
