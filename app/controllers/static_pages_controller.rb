@@ -4,9 +4,7 @@ class StaticPagesController < ApplicationController
 
   def notifications
    session[:notification_checked] =  true
-   @death_notifications = Notification.where(:notification_type => 'Death').where("date_time > ?", Time.now).order('created_at DESC').page params[:page]
-   @final_rites_notifications = Notification.where(:notification_type => 'Final Rites').where("date_time > ?", Time.now).order('created_at DESC').page params[:page]
-   @condolence_notifications = Notification.where(:notification_type => 'Condolence').where("date_time > ?", Date.today.to_time).order('created_at DESC').page params[:page]
+   @notifications = Notification.where("date_time > ? OR (notification_type = 'Sad Demise' AND hide = ?)", Date.today.to_time, false).order('created_at DESC').page params[:page]   
   end
 
   def activities

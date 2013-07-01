@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
   protected
     def check_new_notifications
-      new_notification = Notification.where("date_time > ?", Date.today.to_time).order('date_time DESC').first
+      new_notification = Notification.where("date_time > ? OR (notification_type = 'Sad Demise' AND hide = ?)", Date.today.to_time, false).order('date_time DESC').first
       unless new_notification.blank?
         if session[:new_notification] != new_notification.id
           session[:new_notification] = new_notification.id

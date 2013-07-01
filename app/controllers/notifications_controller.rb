@@ -6,32 +6,28 @@ class NotificationsController < ApplicationController
   # GET /notifications.json
   def index
     @notifications = Notification.order('created_at DESC').page params[:page]
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @notifications }
-    end
   end
 
   # GET /notifications/1
   # GET /notifications/1.json
   def show
     @notification = Notification.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @notification }
-    end
   end
 
   # GET /notifications/new
   # GET /notifications/new.json
   def new
-    @notification = Notification.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @notification }
+    if params[:notification_type]
+      old_record = Notification.find(params[:id])
+      @notification = old_record.dup
+      @notification.notification_type = params[:notification_type]
+      if params[:notification_type] == 'Final Rites'
+        @notification.sad_demise_id = old_record.id
+      else
+        @notification.sad_demise_id = nil
+      end
+    else
+      @notification = Notification.new
     end
   end
 
@@ -46,14 +42,15 @@ class NotificationsController < ApplicationController
     @notification = Notification.new(params[:notification])
     @notification.created_by = current_admin.email
     @notification.updated_by = current_admin.email
-    respond_to do |format|
-      if @notification.save
-        format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
-        format.json { render json: @notification, status: :created, location: @notification }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @notification.errors, status: :unprocessable_entity }
+    if @notification.save
+      unless params[:notification][:sad_demise_id].blank?
+        old_record = Notification.find(params[:notification][:sad_demise_id])
+        old_record.hide = true
+        old_record.save
       end
+      redirect_to @notification, notice: 'Notification was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -62,14 +59,10 @@ class NotificationsController < ApplicationController
   def update
     @notification = Notification.find(params[:id])
     @notification.updated_by = current_admin.email
-    respond_to do |format|
-      if @notification.update_attributes(params[:notification])
-        format.html { redirect_to @notification, notice: 'Notification was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @notification.errors, status: :unprocessable_entity }
-      end
+    if @notification.update_attributes(params[:notification])
+      redirect_to @notification, notice: 'Notification was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -79,10 +72,6 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.disabled = true
     @notification.save
-
-    respond_to do |format|
-      format.html { redirect_to notifications_url }
-      format.json { head :no_content }
-    end
+    redirect_to notifications_url
   end
 end

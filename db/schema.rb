@@ -113,9 +113,10 @@ ActiveRecord::Schema.define(:version => 20130605160643) do
     t.datetime "date_time"
     t.string   "notification_type"
     t.string   "death_of"
-    t.string   "place"
     t.text     "address"
     t.boolean  "disabled",          :default => false
+    t.boolean  "hide",              :default => false
+    t.integer  "sad_demise_id"
     t.string   "created_by"
     t.string   "updated_by"
     t.datetime "created_at",                           :null => false

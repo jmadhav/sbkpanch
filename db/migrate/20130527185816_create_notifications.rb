@@ -6,6 +6,8 @@ class CreateNotifications < ActiveRecord::Migration
       t.string :death_of
       t.text :address
       t.boolean :disabled, :default => false
+      t.boolean :hide, :default => false
+      t.integer :sad_demise_id
       t.string :created_by
       t.string :updated_by
 

@@ -37,6 +37,11 @@
         %b Address:
       .controls{:style => 'padding-top: 6px;'}
         = @notification.address
+.row-fluid
+  - if ['Final Rites', 'Sad Demise'].include? @notification.notification_type and Notification.where(:notification_type => 'Condolence Meeting', :death_of => @notification.death_of).blank?
+    = link_to "<i class='icon-file'></i> Make Condolence Meeting Notification".html_safe, "#{new_notification_path}?notification_type=Condolence Meeting&id=#{@notification.id}", :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
+  - if @notification.notification_type == 'Sad Demise' and @notification.hide == false
+    = link_to "<i class='icon-file'></i> Make Final Rites Notification".html_safe, "#{new_notification_path}?notification_type=Final Rites&id=#{@notification.id}", :class => "btn btn-small pull-right", :style => "margin-left: 15px;"
 
 .row-fluid
   %small.muted

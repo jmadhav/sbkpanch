@@ -8,104 +8,49 @@
 - content_for :subheader do
   .page-header
     %h3
-      Current Notifications
+      Notifications
 
 .row-fluid
-  .page-header
-    %h2 Sad Demise
   .row-fluid
     %ul.pager.pull-right
       %li
-        = link_to_previous_page @death_notifications, 'Previous Page'
+        = link_to_previous_page @notifications, 'Previous Page'
       %li
-        = link_to_next_page @death_notifications, 'Next Page'
+        = link_to_next_page @notifications, 'Next Page'
 
   %table.table.table-striped.table-bordered
     %thead
       %tr
-        %th{ :width => "25%"} Sad Demise of
-        %th Expired on
-        %th{ :width => "50%"} Address
+        %th Please Note...
+        %th{ :width => "25%"} Name
+        %th Date & Time
+        %th{ :width => "40%"} Address
     %tbody
-      - @death_notifications.each do |notification|
+      - @notifications.each do |notification|
         %tr
+          %td= notification.notification_type
           %td= notification.death_of
-          %td= date_format notification.date_time, "%d-%b-%Y"
+          %td= date_format notification.date_time
           %td= notification.address
-      - if @death_notifications.blank?
+        - if notification.notification_type == 'Final Rites'
+          - sad_demise = Notification.where("id = ? AND date_time < ?", notification.sad_demise_id, Date.today.to_time)
+          - unless sad_demise.blank?
+            - sad_demise = sad_demise.first
+            %tr
+              %td= sad_demise.notification_type
+              %td= sad_demise.death_of
+              %td= date_format sad_demise.date_time
+              %td= sad_demise.address
+      - if @notifications.blank?
         %tr
           %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
 
   .row-fluid
     %ul.pager.pull-right
       %li
-        = link_to_previous_page @death_notifications, 'Previous Page'
+        = link_to_previous_page @notifications, 'Previous Page'
       %li
-        = link_to_next_page @death_notifications, 'Next Page'
+        = link_to_next_page @notifications, 'Next Page'
   
-  .page-header
-    %h2 Final Rites
-  .row-fluid
-    %ul.pager.pull-right
-      %li
-        = link_to_previous_page @final_rites_notifications, 'Previous Page'
-      %li
-        = link_to_next_page @final_rites_notifications, 'Next Page'
-
-  %table.table.table-striped.table-bordered
-    %thead
-      %tr
-        %th{ :width => "25%"} Final rites for
-        %th Date Time
-        %th{ :width => "50%"} Address
-    %tbody
-      - @final_rites_notifications.each do |notification|
-        %tr
-          %td= notification.death_of
-          %td= date_format notification.date_time
-          %td= notification.address
-      - if @final_rites_notifications.blank?
-        %tr
-          %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
-
-  .row-fluid
-    %ul.pager.pull-right
-      %li
-        = link_to_previous_page @final_rites_notifications, 'Previous Page'
-      %li
-        = link_to_next_page @final_rites_notifications, 'Next Page'
-
-  .page-header
-    %h2 Condolence
-  .row-fluid
-    %ul.pager.pull-right
-      %li
-        = link_to_previous_page @condolence_notifications, 'Previous Page'
-      %li
-        = link_to_next_page @condolence_notifications, 'Next Page'
-
-  %table.table.table-striped.table-bordered
-    %thead
-      %tr
-        %th{ :width => "25%"} Condolence for
-        %th Date Time
-        %th{ :width => "50%"} Address
-    %tbody
-      - @condolence_notifications.each do |notification|
-        %tr
-          %td= notification.death_of
-          %td= date_format notification.date_time
-          %td= notification.address
-      - if @condolence_notifications.blank?
-        %tr
-          %td{:colspan=>"3", :style=>"text-align:center"} NO NEW NOTIFICATIONS
-
-  .row-fluid
-    %ul.pager.pull-right
-      %li
-        = link_to_previous_page @condolence_notifications, 'Previous Page'
-      %li
-        = link_to_next_page @condolence_notifications, 'Next Page'
-
 :javascript
    window.setTimeout('location.reload()', 60000);
