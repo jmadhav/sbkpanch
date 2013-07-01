@@ -7,33 +7,18 @@ class VisitorMailsController < ApplicationController
   # GET /visitor_mails.json
   def index
     @visitor_mails = VisitorMail.order('created_at DESC').page params[:page]
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @visitor_mails }
-    end
   end
 
   # GET /visitor_mails/1
   # GET /visitor_mails/1.json
   def show
     @visitor_mail = VisitorMail.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @visitor_mail }
-    end
   end
 
   # GET /visitor_mails/new
   # GET /visitor_mails/new.json
   def new
     @visitor_mail = VisitorMail.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @visitor_mail }
-    end
   end
 
   # GET /visitor_mails/1/edit
@@ -51,14 +36,10 @@ class VisitorMailsController < ApplicationController
     committee_emails = get_committee_emails visitor_mail_subject
     send_corresponding_mails committee_emails, visitor_mail_subject, params[:visitor_mail]
     @visitor_mail.to_emails = get_to_emails committee_emails
-    respond_to do |format|
-      if @visitor_mail.save
-        format.html { redirect_to contact_path, notice: 'Thanks for writing to us. Your Email has been sent to concerned person. Please check your inbox for confirmation of email.' }
-        format.json { render json: @visitor_mail, status: :created, location: @visitor_mail }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @visitor_mail.errors, status: :unprocessable_entity }
-      end
+    if @visitor_mail.save
+      redirect_to contact_path, notice: 'Thanks for writing to us. Your Email has been sent to concerned person. Please check your inbox for confirmation of email.'
+    else
+      render action: "new"
     end
   end
 
@@ -67,14 +48,10 @@ class VisitorMailsController < ApplicationController
   def update
     @visitor_mail = VisitorMail.find(params[:id])
     @visitor_mail.updated_by = current_admin.email
-    respond_to do |format|
-      if @visitor_mail.update_attributes(params[:visitor_mail])
-        format.html { redirect_to @visitor_mail, notice: 'Visitor mail was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @visitor_mail.errors, status: :unprocessable_entity }
-      end
+    if @visitor_mail.update_attributes(params[:visitor_mail])
+      redirect_to @visitor_mail, notice: 'Visitor mail was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -84,11 +61,7 @@ class VisitorMailsController < ApplicationController
     @visitor_mail = VisitorMail.find(params[:id])
     @visitor_mail.disabled = true
     @visitor_mail.save
-
-    respond_to do |format|
-      format.html { redirect_to visitor_mails_url }
-      format.json { head :no_content }
-    end
+    redirect_to visitor_mails_url
   end
 
   protected

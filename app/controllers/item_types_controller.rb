@@ -6,33 +6,18 @@ class ItemTypesController < ApplicationController
   # GET /item_types.json
   def index
     @item_types = ItemType.order('created_at DESC').page params[:page]
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @item_types }
-    end
   end
 
   # GET /item_types/1
   # GET /item_types/1.json
   def show
     @item_type = ItemType.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @item_type }
-    end
   end
 
   # GET /item_types/new
   # GET /item_types/new.json
   def new
     @item_type = ItemType.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item_type }
-    end
   end
 
   # GET /item_types/1/edit
@@ -46,14 +31,10 @@ class ItemTypesController < ApplicationController
     @item_type = ItemType.new(params[:item_type])
     @item_type.created_by = current_admin.email
     @item_type.updated_by = current_admin.email
-    respond_to do |format|
-      if @item_type.save
-        format.html { redirect_to item_types_url, notice: 'Item type was successfully created.' }
-        format.json { render json: @item_type, status: :created, location: @item_type }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @item_type.errors, status: :unprocessable_entity }
-      end
+    if @item_type.save
+      redirect_to item_types_url, notice: 'Item type was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -62,14 +43,10 @@ class ItemTypesController < ApplicationController
   def update
     @item_type = ItemType.find(params[:id])
     @item_type.updated_by = current_admin.email
-    respond_to do |format|
-      if @item_type.update_attributes(params[:item_type])
-        format.html { redirect_to item_types_url, notice: 'Item type was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @item_type.errors, status: :unprocessable_entity }
-      end
+    if @item_type.update_attributes(params[:item_type])
+      redirect_to item_types_url, notice: 'Item type was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -79,9 +56,6 @@ class ItemTypesController < ApplicationController
     @item_type = ItemType.find(params[:id])
     @item_type.disabled = true
     @item_type.save
-    respond_to do |format|
-      format.html { redirect_to item_types_url }
-      format.json { head :no_content }
-    end
+    redirect_to item_types_url
   end
 end

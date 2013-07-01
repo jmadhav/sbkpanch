@@ -6,33 +6,18 @@ class VisitorMailSubjectsController < ApplicationController
   # GET /visitor_mail_subjects.json
   def index
     @visitor_mail_subjects = VisitorMailSubject.order('created_at DESC').page params[:page]
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @visitor_mail_subjects }
-    end
   end
 
   # GET /visitor_mail_subjects/1
   # GET /visitor_mail_subjects/1.json
   def show
     @visitor_mail_subject = VisitorMailSubject.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @visitor_mail_subject }
-    end
   end
 
   # GET /visitor_mail_subjects/new
   # GET /visitor_mail_subjects/new.json
   def new
     @visitor_mail_subject = VisitorMailSubject.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @visitor_mail_subject }
-    end
   end
 
   # GET /visitor_mail_subjects/1/edit
@@ -47,14 +32,10 @@ class VisitorMailSubjectsController < ApplicationController
     @visitor_mail_subject.created_by = current_admin.email
     @visitor_mail_subject.updated_by = current_admin.email
 
-    respond_to do |format|
-      if @visitor_mail_subject.save
-        format.html { redirect_to visitor_mail_subjects_url, notice: 'Visitor mail subject was successfully created.' }
-        format.json { render json: @visitor_mail_subject, status: :created, location: @visitor_mail_subject }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @visitor_mail_subject.errors, status: :unprocessable_entity }
-      end
+    if @visitor_mail_subject.save
+      redirect_to visitor_mail_subjects_url, notice: 'Visitor mail subject was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -63,14 +44,10 @@ class VisitorMailSubjectsController < ApplicationController
   def update
     @visitor_mail_subject = VisitorMailSubject.find(params[:id])
     @visitor_mail_subject.updated_by = current_admin.email
-    respond_to do |format|
-      if @visitor_mail_subject.update_attributes(params[:visitor_mail_subject])
-        format.html { redirect_to visitor_mail_subjects_url, notice: 'Visitor mail subject was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @visitor_mail_subject.errors, status: :unprocessable_entity }
-      end
+    if @visitor_mail_subject.update_attributes(params[:visitor_mail_subject])
+      redirect_to visitor_mail_subjects_url, notice: 'Visitor mail subject was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -81,9 +58,6 @@ class VisitorMailSubjectsController < ApplicationController
     @visitor_mail_subject.disabled = true
     @visitor_mail_subject.save
 
-    respond_to do |format|
-      format.html { redirect_to visitor_mail_subjects_url }
-      format.json { head :no_content }
-    end
+    redirect_to visitor_mail_subjects_url
   end
 end

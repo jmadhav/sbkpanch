@@ -6,33 +6,18 @@ class EventTypesController < ApplicationController
   # GET /event_types.json
   def index
     @event_types = EventType.order('created_at DESC').page params[:page]
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @event_types }
-    end
   end
 
   # GET /event_types/1
   # GET /event_types/1.json
   def show
     @event_type = EventType.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @event_type }
-    end
   end
 
   # GET /event_types/new
   # GET /event_types/new.json
   def new
     @event_type = EventType.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @event_type }
-    end
   end
 
   # GET /event_types/1/edit
@@ -43,19 +28,14 @@ class EventTypesController < ApplicationController
   # POST /event_types
   # POST /event_types.json
   def create
-    logger.info params[:event_type].inspect
     @event_type = EventType.new(params[:event_type])
     @event_type.booked = get_booked(params[:event_type][:event_type_item_details_attributes])
     @event_type.created_by = current_admin.email
     @event_type.updated_by = current_admin.email
-    respond_to do |format|
-      if @event_type.save
-        format.html { redirect_to event_types_url, notice: 'Event type was successfully created.' }
-        format.json { render json: @event_type, status: :created, location: @event_type }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @event_type.errors, status: :unprocessable_entity }
-      end
+    if @event_type.save
+      redirect_to event_types_url, notice: 'Event type was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -65,14 +45,10 @@ class EventTypesController < ApplicationController
     @event_type = EventType.find(params[:id])
     @event_type.booked = get_booked(params[:event_type][:event_type_item_details_attributes])
     @event_type.updated_by = current_admin.email
-    respond_to do |format|
-      if @event_type.update_attributes(params[:event_type])
-        format.html { redirect_to event_types_url, notice: 'Event type was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @event_type.errors, status: :unprocessable_entity }
-      end
+    if @event_type.update_attributes(params[:event_type])
+      redirect_to event_types_url, notice: 'Event type was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -82,11 +58,7 @@ class EventTypesController < ApplicationController
     @event_type = EventType.find(params[:id])
     @event_type.disabled = true
     @event_type.save
-
-    respond_to do |format|
-      format.html { redirect_to event_types_url }
-      format.json { head :no_content }
-    end
+    redirect_to event_types_url
   end
   
   protected
