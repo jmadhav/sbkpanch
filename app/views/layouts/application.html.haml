@@ -11,17 +11,17 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-%body
-  / Page Header
-  = render "layouts/header"
-  .container#body
-    %section
-      .row-fluid
-        = yield :subheader
-        - unless alert.blank?
-          %br
-          %p.alert
-            = alert
-        = yield
-        / Page Footer
-        = render "layouts/footer"
+  %body
+    / Page Header
+    = render "layouts/header"
+    .container#body
+      %section
+        .row-fluid
+          = yield :subheader
+          - unless alert.blank?
+            %br
+            %p.alert
+              = alert
+          = yield
+          / Page Footer
+          = render "layouts/footer"
