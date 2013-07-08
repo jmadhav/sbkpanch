@@ -22,16 +22,11 @@
     %thead
       %tr
         %th Please Note...
-        %th{ :width => "25%"} Name
+        %th Name
         %th Date & Time
-        %th{ :width => "40%"} Address
+        %th Address
     %tbody
       - @notifications.each do |notification|
-        %tr
-          %td= notification.notification_type
-          %td= notification.death_of
-          %td= date_format notification.date_time
-          %td= notification.address
         - if notification.notification_type == 'Final Rites'
           - sad_demise = Notification.where("id = ? AND date_time < ?", notification.sad_demise_id, Date.today.to_time)
           - unless sad_demise.blank?
@@ -41,6 +36,15 @@
               %td= sad_demise.death_of
               %td= date_format sad_demise.date_time
               %td= sad_demise.address
+        %tr
+          %td= notification.notification_type
+          %td= notification.death_of
+          - if notification.notification_type == 'Condolence Meeting'
+            %td= "#{date_format notification.date_time} - #{date_format (notification.date_time + 30.minutes), '%I:%M %p'}"
+          - else
+            %td= date_format notification.date_time
+          %td= notification.address
+        
       - if @notifications.blank?
         %tr
           %td{:colspan=>"4", :style=>"text-align:center"} NO NEW NOTIFICATIONS

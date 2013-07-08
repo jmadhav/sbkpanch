@@ -6,12 +6,12 @@ class Notification < ActiveRecord::Base
 
   # Validations
   validates_presence_of :date_time, :notification_type, :death_of, :address, :created_by, :updated_by
-  validates_uniqueness_of :death_of, :scope => :notification_type
+  validates_uniqueness_of :death_of, :scope => [:notification_type, :disabled], :if => Proc.new{|obj| obj.disabled == false}
   validates_uniqueness_of :sad_demise_id, :scope => :disabled, :allow_nil => true
   validates_inclusion_of :notification_type, in: ["Sad Demise", "Final Rites", "Condolence Meeting"]
   validates_inclusion_of :disabled, :hide, in: [true, false]
   
-  validate :validate_date_time, :validate_notification_type_and_sad_demise_id
+  validate :validate_date_time, :validate_notification_type_and_sad_demise_id, :if => Proc.new{|obj| obj.disabled == false}
 
   def validate_date_time
     return self.errors.add(:base, "Date time should be today or after todays date.") if self.date_time < Date.today.to_time and self.notification_type != 'Sad Demise'
