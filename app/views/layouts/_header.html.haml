@@ -37,10 +37,10 @@
               %li
                 %a{:href => "/current_notifications"}
                   - unless session[:notification_checked]
-                    New Notifcations
+                    New Notifications
                     %img{ :src => "/assets/notification.svg.thumb.png", :style => "height:20px"}/
                   - else
-                    Notifcations
+                    Notifications
             - if content_for?(:navbar_about_us)
               = yield(:navbar_about_us)
             -else
