@@ -31,14 +31,4 @@
             -else
               %li
                 %a{:href => "/about_us"} About us
-            - if content_for?(:navbar_notifications)
-              = yield(:navbar_notifications)
-            - else
-              %li
-                %a{:href => "/current_notifications"}
-                  - unless session[:notification_checked]
-                    New Notifications
-                    %img{ :src => "/assets/notification.svg.thumb.png", :style => "height:20px"}/
-                  - else
-                    Notifications
             
