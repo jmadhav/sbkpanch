@@ -1,17 +1,17 @@
 !!!
-%html{:lang => "en"}
+%html
   %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title
       SBK Panch | |
       = yield :title
-    %meta{:content => "Bootsrap based theme", :name => "description"}
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    /[if lt IE 9]
-      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_include_tag "application", "data-turbo-track": "reload"
+    = stylesheet_link_tag "application", "data-turbo-track": "reload", "media": "all"
   %body
+    = render "layouts/fb_page_plugin_sdk"
     / Page Header
     = render "layouts/header"
     .container#body

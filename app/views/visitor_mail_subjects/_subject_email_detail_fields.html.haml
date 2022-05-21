@@ -1,7 +1,0 @@
-%tr.fields
-  %td
-    = f.select :receiver_type, ["To:", "Cc:", "Bcc:"], {:include_blank => false}, :required => true
-  %td
-    = f.select :committee_email_id, CommitteeEmail.all.map{|i| [i.email , i.id]}, {:include_blank => false}, :required => true
-  %td
-    = link_to_remove_fields("<i class='icon-trash'></i> Delete".html_safe, f)
