@@ -31,4 +31,9 @@
             -else
               %li
                 %a{:href => "/about_us"} About us
+            - if content_for?(:navbar_credits)
+              = yield(:navbar_credits)
+            -else
+              %li
+                %a{:href => "/credits"} Credits 
             
