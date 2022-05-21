@@ -16,15 +16,9 @@
   .span3
     %p.pull-center
       = link_to "Credits", credits_path
-      - unless admin_signed_in?
-        |
-        = link_to "Admin Login", new_admin_session_path
     %p.pull-center
-      = link_to "Tasks", 'https://github.com/jmadhav/sbkpanch/issues/milestones'
-      |
-      = link_to "Issues", 'https://github.com/jmadhav/sbkpanch/issues'
-      |
-      = link_to "Changelog", 'https://github.com/jmadhav/sbkpanch/blob/master/CHANGELOG.md'
+      %a{:href => "https://www.facebook.com/sbk.panch", :target => "_blank", :title => "follow me on facebook"}
+        %img{:alt => "follow me on facebook", :border => "0", :src => "/assets/badgefacebook.png", :style=> "max-width: 40%"}/
 
 :javascript
   $("#back-top").hide();

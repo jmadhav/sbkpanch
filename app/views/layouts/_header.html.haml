@@ -26,14 +26,14 @@
             -else
               %li
                 %a{:href => "/activities"} Activities
-            - if content_for?(:navbar_events)
-              = yield(:navbar_events)
+            - if content_for?(:navbar_about_us)
+              = yield(:navbar_about_us)
             -else
               %li
-                %a{:href => "/current_events"} Events
+                %a{:href => "/about_us"} About us
             - if content_for?(:navbar_notifications)
               = yield(:navbar_notifications)
-            -else
+            - else
               %li
                 %a{:href => "/current_notifications"}
                   - unless session[:notification_checked]
@@ -41,34 +41,4 @@
                     %img{ :src => "/assets/notification.svg.thumb.png", :style => "height:20px"}/
                   - else
                     Notifications
-            - if content_for?(:navbar_about_us)
-              = yield(:navbar_about_us)
-            -else
-              %li
-                %a{:href => "/about_us"} About us
-            - if content_for?(:navbar_contact)
-              = yield(:navbar_contact)
-            - else    
-              %li
-                %a{:href => "/contact"} Contact
-            - if admin_signed_in?
-              - if content_for?(:navbar_dashboard)
-                = yield(:navbar_dashboard)
-              - else
-                %li
-                  %a{:href => admins_dashboard_path} 
-                    %i.icon-user
-                    #{current_admin.name}
-              %li 
-                = link_to "Sign out", destroy_admin_session_path, :method  =>  :delete
-            -#else       
-              - if content_for?(:navbar_signup)
-                = yield(:navbar_signup)
-              -else
-                %li
-                  = link_to "Sign up", new_authentication_registration_path
-              - if content_for?(:navbar_signin)
-                = yield(:navbar_signin)
-              -else
-                %li
-                  = link_to "Sign in", new_authentication_session_path
+            

@@ -1,0 +1,298 @@
+$navbarBackground: white;
+$navbarBackgroundHighlight: white;
+$navbarText: orange;
+$navbarBrandColor: orange;
+
+@import "old-bootstrap";
+
+body {
+    padding-top: 150px;
+    background-image:url(/assets/retina-wood-2X.png);
+};
+
+.justify-text{
+  text-align: justify;
+}
+
+.container#body{
+  background:white;
+  margin-top: -40px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow:    7px 7px 10px rgba(50, 50, 50, 0.25);
+    box-shadow:         7px 7px 10px rgba(50, 50, 50, 0.25);
+}
+
+.container#body section{
+  background:white;
+  margin: 20px 20px 0px 20px;
+}
+
+@media (min-width: 1200px) {
+  .container{
+    width: 960px !important;
+  }
+}
+
+@import "old-bootstrap-responsive";
+
+.control-group#remember-me {
+  margin-bottom: 0px;
+}
+
+#sign_in_from .form-actions {
+  margin-top: 0px;
+}
+.form-actions {
+  background-color: white;
+  border-top: none;
+}
+
+.pull-center {
+  text-align: center;
+}
+
+.page-header{
+  border-bottom: none;
+  padding-bottom: 0px;
+}
+
+a:hover,a:active{
+  background:none !important;
+  background-color:transparent !important;  
+  color:orange !important;
+}
+
+/*  Navbar            */
+/*--------------------*/
+.layer1 {
+  z-index: 1;
+  position: relative;
+  -webkit-box-shadow: 7px 8px 10px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow:    7px 8px 10px rgba(50, 50, 50, 0.25);
+    box-shadow:         7px 8px 10px rgba(50, 50, 50, 0.25);
+}
+
+.layer2 {
+  top:-40px;
+  z-index: 2;
+  position: relative;
+}
+
+.container .brand {
+  *margin-left: 20px;
+}
+
+.navbar-inverse .navbar-inner {
+  background-color: transparent;
+  background-image: none;
+  background-repeat: repeat-x;
+  filter: none;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+  padding-left: none;
+  padding-right: none;
+  -webkit-border-radius: none;
+  -moz-border-radius: none;
+  border-radius: none;
+}
+
+.navbar-inner {
+  background-image: none;
+  background-repeat: repeat-x;
+  filter: none;
+  webkit-box-shadow: none;
+  background-repeat: none;
+  box-shadow: none;
+}
+
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+  font-family: verdana, arial, helvetica, sans-serif;
+  color: black;
+  text-shadow: none;
+}
+
+
+@media (min-width: 1200px) {
+  .navbar-inverse .brand:hover, .navbar-inverse .nav > li > a:hover {
+    color: white !important;
+  }
+
+  .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+    font-family: verdana, arial, helvetica, sans-serif;
+    color: white !important;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+  color: orange;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {
+  border-width: 0px;
+}
+
+/* Home Page          */
+/*--------------------*/
+.logo {
+  background-color: #f6821f;
+}
+
+.carousel-control {
+  top: 50%;  
+}
+
+.carousel-indicators {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  margin: 0;
+  list-style: none;
+}
+
+.carousel-indicators li {
+  display: block;
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+  text-indent: -999px;
+  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+}
+
+.carousel-indicators .active {
+  background-color: #fff;
+}
+
+
+/* Activites          */
+/*--------------------*/
+li.bold {
+  font-weight: bold;
+}
+
+.activities dd {
+  margin-left:18px;
+}
+
+/* Footer             */
+/*--------------------*/
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+}
+
+footer a {
+  color: #555;
+}  
+
+footer a:hover { 
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+
+
+/* Scroll to Top */
+#back-top {
+	position: fixed;
+	bottom: 5%;
+	z-index:1;
+	right: 5%;
+}
+
+#back-top a {
+}
+
+/* arrow icon (span tag) */
+#back-top span {
+	background: url(/assets/top.jpg) no-repeat center center;
+}
+
+
+/*-- DatePicker --*/
+.ui-datepicker{
+  width: auto;
+}
+
+.ui-widget{
+  font-size: 12px;
+  font-family: 'Open Sans', Arial, serif;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+  font-weight: normal;
+}
+.ui-datepicker table{
+  font-size: 12px;
+  font-family: 'Open Sans', Arial, serif;
+  line-height: 14px;
+}
+
+
+
+.ui-timepicker-div dl{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.ui-timepicker-div dl dd{
+  margin:10px 10px 8px 65px !important;
+}
+.ui-timepicker-div dl dt, .ui-timepicker-div dl dd {
+  *display: inline;
+  font-weight: normal;
+  line-height: 14px !important;
+  height: auto !important;
+}
+.ui-datepicker .ui-datepicker-buttonpane{
+    margin-top: 0px;
+    padding-left: 0px;
+}
+
+.ui-timepicker-select, .ui-widget select{
+  font-size: 12px;
+  font-family: 'Open Sans', Arial, serif; 
+  width: auto;
+  height: auto;
+  line-height: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.ui_tpicker_time_label, .ui_tpicker_time {
+  display: none;
+}
+
+.ui-timepicker-select, .ui-widget .ui_tpicker_timezone select{
+  width: 100px;
+}
